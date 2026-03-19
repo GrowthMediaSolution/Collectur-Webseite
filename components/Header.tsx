@@ -101,15 +101,25 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200/60 shadow-sm">
-      <nav ref={navRef} className="max-w-6xl mx-auto flex items-center justify-between px-5 py-3.5">
+    <header className="fixed top-4 inset-x-0 z-50 px-4">
+      <nav
+        ref={navRef}
+        className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3 rounded-2xl"
+        style={{
+          background: 'rgba(255, 255, 255, 0.55)',
+          backdropFilter: 'blur(24px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          border: '1px solid rgba(255, 255, 255, 0.7)',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 1.5px 0 rgba(255,255,255,0.8) inset',
+        }}
+      >
         <Link href="/" className="flex items-center group" aria-label="Startseite">
           <Image
             src="/logo.png"
             alt="Collectus Entrümpelung"
-            width={140}
-            height={56}
-            className="h-12 w-auto group-hover:scale-105 transition-transform"
+            width={160}
+            height={64}
+            className="h-14 w-auto group-hover:scale-105 transition-transform"
             priority
           />
         </Link>
@@ -175,7 +185,16 @@ export default function Header() {
       </nav>
 
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg max-h-[80vh] overflow-y-auto">
+        <div
+          className="lg:hidden mt-2 rounded-2xl max-h-[80vh] overflow-y-auto"
+          style={{
+            background: 'rgba(255,255,255,0.75)',
+            backdropFilter: 'blur(24px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+            border: '1px solid rgba(255,255,255,0.7)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
+          }}
+        >
           <ul className="flex flex-col divide-y divide-gray-100">
             {navLinks.map((item) =>
               'children' in item && item.children ? (

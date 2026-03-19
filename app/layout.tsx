@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de" className={`${ptSans.variable} ${ptSansNarrow.variable}`}>
       <body>
         <Header />
-        <main>{children}</main>
+        <main className="pt-24">{children}</main>
         <Footer />
       </body>
     </html>
