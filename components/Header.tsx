@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import { PhoneIcon, MenuIcon, XIcon, ChevronRightIcon } from './Icons'
 
 const navLinks = [
+  { href: '/', label: 'Home' },
   {
     label: 'Leistungen',
     children: [
