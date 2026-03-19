@@ -16,6 +16,7 @@ export function CtaBanner() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="tel:023829661456"
+            title="Collectus Entrümpelung anrufen – 02382 9661456"
             className="inline-flex items-center justify-center gap-2.5 bg-white text-primary font-bold px-8 py-4 rounded-2xl text-lg shadow-lg hover:bg-gray-50 transition-colors"
           >
             <PhoneIcon className="w-5 h-5" />
@@ -23,6 +24,7 @@ export function CtaBanner() {
           </a>
           <a
             href="mailto:info@rundumshausserviceleistungen.de"
+            title="E-Mail an Collectus Entrümpelung senden"
             className="inline-flex items-center justify-center gap-2.5 bg-white/15 text-white font-semibold px-8 py-4 rounded-2xl text-lg hover:bg-white/25 transition-colors border border-white/20"
           >
             <MailIcon className="w-5 h-5" />
@@ -57,7 +59,7 @@ export function PageHero({ title, highlight, description, breadcrumb }: {
       <div className="absolute inset-0 -z-10 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #3B82F6 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
       <div className="max-w-6xl mx-auto px-5">
         <nav className="text-sm text-gray-400 mb-6" aria-label="Breadcrumb">
-          <a href="/" className="hover:text-primary transition-colors">Startseite</a>
+          <a href="/" title="Zur Startseite – Collectus Entrümpelung" className="hover:text-primary transition-colors">Startseite</a>
           <span className="mx-2">/</span>
           <span className="text-gray-600">{breadcrumb}</span>
         </nav>

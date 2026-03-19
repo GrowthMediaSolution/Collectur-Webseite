@@ -151,6 +151,7 @@ export default function Header() {
                       <Link
                         key={child.href}
                         href={child.href}
+                        title={`${child.label} – Collectus Entrümpelung`}
                         className="block px-4 py-2 text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-colors"
                       >
                         {child.label}
@@ -161,7 +162,7 @@ export default function Header() {
               </li>
             ) : (
               <li key={item.href}>
-                <Link href={item.href!} className="hover:text-primary transition-colors py-2">{item.label}</Link>
+                <Link href={item.href!} title={`${item.label} – Collectus Entrümpelung`} className="hover:text-primary transition-colors py-2">{item.label}</Link>
               </li>
             )
           )}
@@ -169,6 +170,7 @@ export default function Header() {
 
         <a
           href="tel:023829661456"
+          title="Collectus Entrümpelung anrufen"
           className="hidden lg:inline-flex items-center gap-2 border border-primary/15 bg-primary-50 hover:bg-primary text-primary hover:text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-sm transition-all hover:-translate-y-0.5"
         >
           <PhoneIcon className="w-4 h-4" />
