@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { PhoneIcon, MailIcon } from './Icons'
 
@@ -67,6 +68,28 @@ export function PageHero({ title, highlight, description, breadcrumb }: {
           {title} <span className="text-primary">{highlight}</span>
         </h1>
         <p className="text-lg text-gray-500 leading-relaxed max-w-3xl">{description}</p>
+      </div>
+    </section>
+  )
+}
+
+export function RelatedLinks({ links }: { links: { href: string; label: string }[] }) {
+  return (
+    <section className="py-16 md:py-20">
+      <div className="max-w-6xl mx-auto px-5">
+        <h3 className="font-heading text-2xl font-black text-gray-900 mb-8 text-center">Weitere Leistungen</h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {links.map(l => (
+            <Link
+              key={l.href}
+              href={l.href}
+              title={`${l.label} – Collectus Entrümpelung`}
+              className="block rounded-2xl border border-gray-200 hover:border-primary/30 bg-white p-5 text-center font-semibold text-gray-800 hover:text-primary shadow-sm hover:shadow-md transition-all"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   )

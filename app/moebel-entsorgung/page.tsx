@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { PageHero, CtaBanner } from '../../components/Shared'
+import { PageHero, CtaBanner, RelatedLinks } from '../../components/Shared'
 import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, MapPinIcon, SparklesIcon } from '../../components/Icons'
 
@@ -112,23 +112,12 @@ export default function MoebelEntsorgung() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-5">
-          <h3 className="font-heading text-2xl font-black text-gray-900 mb-8 text-center">Weitere Leistungen</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
+      <RelatedLinks links={[
               { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
               { href: '/elektroschrott-entsorgung', label: 'Elektroschrott-Entsorgung' },
               { href: '/entruempelung', label: 'Entrümpelung' },
               { href: '/entruempelung-kosten', label: 'Kosten & Preise' },
-            ].map(l => (
-              <Link key={l.href} href={l.href} className="block rounded-2xl border border-gray-200 hover:border-primary/30 bg-white p-5 text-center font-semibold text-gray-800 hover:text-primary shadow-sm hover:shadow-md transition-all">
-                {l.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+            ]} />
 
       <CtaBanner />
     </>

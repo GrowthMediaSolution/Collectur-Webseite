@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { PhoneIcon, MailIcon, MapPinIcon } from './Icons'
 
 export default function Footer() {
@@ -7,12 +8,14 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-5">
         <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" title="Collectus Entrümpelung – Startseite" className="flex items-center gap-2.5 mb-4">
-              <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary text-white font-heading font-black text-lg">C</span>
-              <span className="font-heading text-lg font-bold text-white leading-tight">
-                Collectus<br />
-                <span className="text-xs font-body font-medium text-primary-light tracking-wide">Entrümpelung</span>
-              </span>
+            <Link href="/" title="Collectus Entrümpelung – Startseite" className="inline-block mb-4">
+              <Image
+                src="/logo.png"
+                alt="Collectus Entrümpelung"
+                width={140}
+                height={56}
+                className="h-12 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="text-sm leading-relaxed">
               Ihr Partner für professionelle Entrümpelung, Wohnungsauflösung und Haushaltsauflösung in Ahlen und Umgebung.
