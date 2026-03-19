@@ -1,0 +1,129 @@
+import { Link } from 'react-router-dom'
+import { PageHero, CtaBanner } from '../components/Shared'
+import { LocalBusinessSchema } from '../components/Schema'
+import { CheckCircleIcon, MapPinIcon, TruckIcon } from '../components/Icons'
+
+const leistungen = [
+  'Wohnungsauflösungen & Haushaltsauflösungen',
+  'Entrümpelung einzelner Räume oder ganzer Gebäude',
+  'Keller- und Dachbodenräumung',
+  'Sperrmüll- und Elektroschrott-Entsorgung',
+  'Nachlassentrümpelung & Messie-Entrümpelung',
+  'Besenreine Übergabe und Grundreinigung',
+]
+
+export default function EntruempelungMuenster() {
+  return (
+    <>
+      <LocalBusinessSchema serviceName="Entrümpelung" areaServed="Münster" />
+      <PageHero
+        title="Entrümpelung in"
+        highlight="Münster"
+        description="Ihr Entrümpelungsservice für Münster und alle Stadtteile. Wohnungsauflösung, Haushaltsauflösung und Gewerbeentrümpelung – professionell von Collectus aus Ahlen."
+        breadcrumb="Entrümpelung Münster"
+        seoTitle="Entrümpelung Münster – Alle Stadtteile | Collectus"
+        seoDescription="Entrümpelung in Münster und allen Stadtteilen. Wohnungsauflösung, Gewerbeentrümpelung, besenreine Übergabe. Jetzt anfragen!"
+      />
+
+      <section className="py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-14 items-start">
+          <div>
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">ca. 45 km von Ahlen</span>
+            <h2 className="font-heading text-3xl font-black text-gray-900 mt-2 mb-6">
+              Entrümpelung Münster – schnell &amp; zuverlässig
+            </h2>
+            <p className="text-gray-500 leading-relaxed mb-6">
+              Münster ist mit über 310.000 Einwohnern die größte Stadt im Münsterland. Ob Altbauwohnung
+              in der Innenstadt, Reihenhaus in Hiltrup oder Gewerberäume in Amelsbüren – Collectus Entrümpelung
+              ist Ihr Ansprechpartner für die gesamte Entrümpelung in Münster und allen Stadtteilen.
+            </p>
+            <p className="text-gray-500 leading-relaxed mb-8">
+              Von unserem Standort in Ahlen sind wir in rund 45 Minuten bei Ihnen in Münster. Wir bieten
+              kostenlose Besichtigungen vor Ort und erstellen transparente Festpreisangebote – ohne versteckte Kosten.
+            </p>
+            <ul className="space-y-3">
+              {leistungen.map((d, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckCircleIcon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                  <span className="text-gray-700">{d}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="bg-gradient-to-br from-primary-50 via-white to-primary-100 rounded-3xl p-8 border border-primary/10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center">
+                <TruckIcon />
+              </div>
+              <div>
+                <p className="font-heading text-xl font-bold text-gray-900">Münster</p>
+                <p className="text-sm text-gray-500">Alle Stadtteile · ~45 km</p>
+              </div>
+            </div>
+            <p className="text-sm text-gray-600 mb-4 font-semibold">Stadtteile die wir bedienen:</p>
+            <div className="flex flex-wrap gap-2">
+              {['Münster-Mitte', 'Hiltrup', 'Amelsbüren', 'Wolbeck', 'Handorf', 'Gievenbeck', 'Roxel', 'Kinderhaus', 'Mauritz', 'Gremmendorf'].map(ort => (
+                <span key={ort} className="bg-white rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 border border-gray-200">{ort}</span>
+              ))}
+            </div>
+            <div className="mt-6 bg-dark rounded-xl p-5 text-white">
+              <p className="text-sm font-bold mb-1">Kostenlose Besichtigung</p>
+              <p className="text-xs text-white/70">Wir kommen unverbindlich zu Ihnen nach Münster und erstellen ein Festpreisangebot.</p>
+              <a href="tel:023829661456" className="mt-3 inline-flex items-center gap-2 text-primary-light font-bold text-sm hover:underline">
+                02382 9661456
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-5">
+          <h2 className="font-heading text-2xl sm:text-3xl font-black text-gray-900 mb-6">
+            Ihr Entrümpelungsservice für ganz Münster
+          </h2>
+          <div className="space-y-4 text-gray-600 leading-relaxed">
+            <p>
+              In Münster gibt es viele Gründe für eine Entrümpelung: Umzug, Erbfall, Renovierung oder
+              Geschäftsaufgabe. Egal ob Sie eine komplette Wohnungsauflösung in der Altstadt benötigen oder
+              einen Keller in Hiltrup räumen lassen möchten – wir übernehmen den gesamten Prozess.
+            </p>
+            <p>
+              Als regionaler Entrümpelungsservice mit Sitz in Ahlen kennen wir uns im Münsterland bestens aus.
+              Wir garantieren schnelle Termine, faire Preise und eine besenreine Übergabe. Verwertbare
+              Gegenstände werden angerechnet, sodass die Kosten für Sie sinken können.
+            </p>
+          </div>
+          <div className="mt-10 flex flex-wrap gap-2">
+            {['Entrümpelung Münster', 'Wohnungsauflösung Münster', 'Haushaltsauflösung Münster', 'Entrümpelungsfirma Münster', 'Möbelentsorgung Münster'].map(tag => (
+              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+                <MapPinIcon className="w-3 h-3" />{tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-5">
+          <h3 className="font-heading text-2xl font-black text-gray-900 mb-8 text-center">Weitere Einsatzgebiete</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { to: '/entruempelung-beckum', label: 'Entrümpelung Beckum' },
+              { to: '/entruempelung-hamm', label: 'Entrümpelung Hamm' },
+              { to: '/entruempelung-warendorf', label: 'Entrümpelung Warendorf' },
+              { to: '/entruempelung-telgte', label: 'Entrümpelung Telgte' },
+            ].map(l => (
+              <Link key={l.to} to={l.to} className="block rounded-2xl border border-gray-200 hover:border-primary/30 bg-white p-5 text-center font-semibold text-gray-800 hover:text-primary shadow-sm hover:shadow-md transition-all">
+                {l.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner />
+    </>
+  )
+}
