@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { PhoneIcon, MenuIcon, XIcon, ChevronRightIcon } from './Icons'
 
@@ -102,14 +103,15 @@ export default function Header() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200/60 shadow-sm">
       <nav ref={navRef} className="max-w-6xl mx-auto flex items-center justify-between px-5 py-3.5">
-        <Link href="/" className="flex items-center gap-2.5 group" aria-label="Startseite">
-          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary text-white font-heading font-black text-lg tracking-tight shadow-md shadow-primary/25 group-hover:scale-105 transition-transform">
-            C
-          </span>
-          <span className="hidden sm:block font-heading text-lg font-bold text-gray-900 leading-tight">
-            Collectus<br />
-            <span className="text-xs font-body font-medium text-primary tracking-wide">Entrümpelung</span>
-          </span>
+        <Link href="/" className="flex items-center group" aria-label="Startseite">
+          <Image
+            src="/logo.png"
+            alt="Collectus Entrümpelung"
+            width={140}
+            height={56}
+            className="h-12 w-auto group-hover:scale-105 transition-transform"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

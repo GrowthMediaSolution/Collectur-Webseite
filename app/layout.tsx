@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: 'Collectus Entrümpelung Ahlen – Wohnungsauflösung & Haushaltsauflösung',
   description: 'Professionelle Entrümpelung, Wohnungsauflösung und Haushaltsauflösung in Ahlen und Umgebung.',
   metadataBase: new URL('https://collectus-entruempelung.de'),
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
