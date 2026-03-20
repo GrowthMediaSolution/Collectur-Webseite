@@ -238,12 +238,14 @@ export function MultiStepForm() {
             </button>
             <button
               type="submit"
-              className="flex-1 bg-primary text-white font-bold py-3.5 rounded-2xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20"
+              className="flex-1 bg-primary text-white font-bold py-3.5 rounded-2xl hover:bg-primary-dark transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20"
             >
-              Anfrage senden
+              Kostenlos anfragen →
             </button>
           </div>
-          <p className="text-xs text-gray-400 text-center mt-3">Kostenlos & unverbindlich – kein Spam.</p>
+          <p className="text-xs text-gray-400 text-center mt-3">
+            ✓ Keine Anzahlung &nbsp;·&nbsp; ✓ Kein Risiko &nbsp;·&nbsp; ✓ Kein Spam
+          </p>
         </form>
       )}
     </div>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   PhoneIcon, MailIcon, MapPinIcon, CheckCircleIcon, ShieldCheckIcon,
-  SparklesIcon, TruckIcon, RecycleIcon, ClockIcon, HomeIcon, ArchiveIcon,
+  SparklesIcon, TruckIcon, RecycleIcon, HomeIcon, ArchiveIcon,
 } from '../components/Icons'
 import { MultiStepForm } from '../components/MultiStepForm'
 
@@ -81,9 +81,16 @@ function Hero() {
       <div className="max-w-6xl mx-auto px-5">
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,420px)] lg:gap-14">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary-50 px-4 py-1.5 text-sm font-semibold text-primary mb-6 shadow-sm shadow-primary/5">
-              <MapPinIcon className="w-4 h-4" />
-              Ahlen & Umgebung
+            {/* Badges */}
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary-50 px-4 py-1.5 text-sm font-semibold text-primary shadow-sm shadow-primary/5">
+                <MapPinIcon className="w-4 h-4" />
+                Ahlen & Umgebung
+              </div>
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-yellow-200 bg-yellow-50 px-4 py-1.5 text-sm font-semibold text-yellow-700 shadow-sm">
+                <span className="text-yellow-400 tracking-tight leading-none">★★★★★</span>
+                500+ zufriedene Kunden
+              </div>
             </div>
 
             <h1 className="font-heading text-[2.9rem] leading-[1.02] tracking-tight text-gray-900 sm:text-[3.7rem] xl:text-[4.35rem] font-black mb-6">
@@ -98,33 +105,42 @@ function Hero() {
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <a
                 href="tel:023829661456"
-                className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-primary px-8 py-4 text-lg font-bold text-white shadow-xl shadow-primary/25 transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-primary/35"
+                className="inline-flex flex-col items-center justify-center gap-0 rounded-2xl bg-primary px-8 py-4 font-bold text-white shadow-xl shadow-primary/25 transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-primary/35"
               >
-                <PhoneIcon className="w-5 h-5" />
-                02382 9661456
+                <span className="flex items-center gap-2 text-lg">
+                  <PhoneIcon className="w-5 h-5" />
+                  Jetzt kostenlos anrufen
+                </span>
+                <span className="text-xs font-normal text-white/70">02382 9661456 · Antwort in &lt; 2 Std.</span>
               </a>
               <Link
                 href="/kontakt"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 px-8 py-4 text-lg font-semibold text-gray-700 transition-all hover:border-primary hover:text-primary"
               >
-                Kostenlose Besichtigung
+                Kostenloses Angebot anfordern →
               </Link>
             </div>
+
+            {/* Urgency signal */}
+            <p className="mt-4 text-sm text-gray-400">
+              <span className="inline-block w-2 h-2 rounded-full bg-green-400 mr-1.5 align-middle animate-pulse" />
+              Termine diese Woche noch verfügbar &nbsp;·&nbsp; Keine Anzahlung &nbsp;·&nbsp; Kein Risiko
+            </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-gray-200 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-sm">
                 <div className="flex items-center gap-2 text-sm font-semibold text-gray-800">
                   <CheckCircleIcon className="w-4 h-4 text-success" />
-                  Kostenlose Beratung
+                  100 % kostenlose Beratung
                 </div>
-                <p className="mt-1 text-sm text-gray-500">Vor-Ort-Termin ohne Verpflichtung.</p>
+                <p className="mt-1 text-sm text-gray-500">Vor-Ort-Termin ohne jede Verpflichtung.</p>
               </div>
               <div className="rounded-2xl border border-gray-200 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-sm">
                 <div className="flex items-center gap-2 text-sm font-semibold text-gray-800">
                   <SparklesIcon className="w-4 h-4 text-primary" />
-                  Besenreine Übergabe
+                  Festpreis – keine Überraschungen
                 </div>
-                <p className="mt-1 text-sm text-gray-500">Sauber vorbereitet für Verkauf oder Vermietung.</p>
+                <p className="mt-1 text-sm text-gray-500">Transparentes Angebot, das wir einhalten.</p>
               </div>
               <div className="rounded-2xl border border-gray-200 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-sm">
                 <div className="flex items-center gap-2 text-sm font-semibold text-gray-800">
@@ -312,62 +328,73 @@ function Contact() {
         <div className="grid lg:grid-cols-2 gap-14">
           <div>
             <span className="text-primary font-semibold text-sm tracking-wider uppercase">Kontakt</span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-black text-gray-900 mt-2 mb-6">
-              Kostenlos beraten lassen
+            <h2 className="font-heading text-3xl sm:text-4xl font-black text-gray-900 mt-2 mb-3">
+              In 24 Stunden zum Festpreisangebot
             </h2>
-            <p className="text-gray-500 leading-relaxed mb-8">
-              Rufen Sie uns an oder schreiben Sie eine E-Mail. Wir melden uns schnellstmöglich und vereinbaren
-              einen kostenlosen Besichtigungstermin bei Ihnen vor Ort.
+            <p className="text-gray-500 leading-relaxed mb-2">
+              Rufen Sie uns an – wir reagieren schnell, vereinbaren einen kostenlosen Besichtigungstermin
+              und geben Ihnen ein verbindliches Festpreisangebot. Ohne Risiko, ohne Anzahlung.
+            </p>
+            <p className="text-sm text-primary font-semibold mb-8">
+              ✓ Kein Anruf-Risiko – wir melden uns innerhalb von 2 Stunden zurück
             </p>
 
-            <div className="space-y-5">
-              <a href="tel:023829661456" className="flex items-center gap-4 group">
-                <span className="w-12 h-12 rounded-xl bg-primary-50 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+            <div className="space-y-4">
+              <a href="tel:023829661456" className="flex items-center gap-4 group p-4 rounded-2xl border border-transparent hover:border-primary/20 hover:bg-primary-50/50 transition-all">
+                <span className="w-12 h-12 rounded-xl bg-primary-50 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
                   <PhoneIcon />
                 </span>
                 <span>
-                  <span className="block text-sm text-gray-400">Telefon</span>
+                  <span className="block text-xs text-gray-400 uppercase tracking-wider">Direkt anrufen – schnellster Weg</span>
                   <span className="font-bold text-gray-900 text-lg">02382 9661456</span>
+                  <span className="block text-xs text-gray-400 mt-0.5">Mo–Sa · 08:00–18:00 Uhr</span>
                 </span>
               </a>
 
-              <a href="mailto:info@rundumshausserviceleistungen.de" className="flex items-center gap-4 group">
-                <span className="w-12 h-12 rounded-xl bg-primary-50 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+              <a href="mailto:info@rundumshausserviceleistungen.de" className="flex items-center gap-4 group p-4 rounded-2xl border border-transparent hover:border-primary/20 hover:bg-primary-50/50 transition-all">
+                <span className="w-12 h-12 rounded-xl bg-primary-50 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
                   <MailIcon />
                 </span>
                 <span>
-                  <span className="block text-sm text-gray-400">E-Mail</span>
+                  <span className="block text-xs text-gray-400 uppercase tracking-wider">Per E-Mail anfragen</span>
                   <span className="font-bold text-gray-900">info@rundumshausserviceleistungen.de</span>
+                  <span className="block text-xs text-gray-400 mt-0.5">Antwort innerhalb von 2 Stunden</span>
                 </span>
               </a>
 
-              <div className="flex items-center gap-4">
-                <span className="w-12 h-12 rounded-xl bg-primary-50 text-primary flex items-center justify-center">
+              <div className="flex items-center gap-4 p-4">
+                <span className="w-12 h-12 rounded-xl bg-primary-50 text-primary flex items-center justify-center shrink-0">
                   <MapPinIcon />
                 </span>
                 <span>
-                  <span className="block text-sm text-gray-400">Adresse</span>
+                  <span className="block text-xs text-gray-400 uppercase tracking-wider">Adresse</span>
                   <span className="font-bold text-gray-900">Lessingstraße 62, 59227 Ahlen</span>
                 </span>
               </div>
+            </div>
 
-              <div className="flex items-center gap-4">
-                <span className="w-12 h-12 rounded-xl bg-primary-50 text-primary flex items-center justify-center">
-                  <ClockIcon />
-                </span>
-                <span>
-                  <span className="block text-sm text-gray-400">Erreichbarkeit</span>
-                  <span className="font-bold text-gray-900">Mo–Sa · 08:00–18:00 Uhr</span>
-                </span>
+            {/* Social Proof */}
+            <div className="mt-6 flex items-center gap-3 p-4 rounded-2xl bg-gray-50 border border-gray-100">
+              <div className="text-yellow-400 text-xl leading-none tracking-tight">★★★★★</div>
+              <div>
+                <p className="text-sm font-semibold text-gray-900">Über 500 Aufträge in der Region</p>
+                <p className="text-xs text-gray-500">„Schnell, zuverlässig und sauber – genau wie versprochen."</p>
               </div>
             </div>
           </div>
 
           <div className="flex items-center">
             <div className="w-full rounded-3xl border border-gray-200 bg-white p-8 shadow-xl shadow-gray-100">
-              <div className="mb-6">
-                <p className="text-xs font-semibold uppercase tracking-widest text-primary">Kostenlose Anfrage</p>
-                <h3 className="font-heading text-2xl font-black text-gray-900 mt-1">Jetzt Angebot anfordern</h3>
+              <div className="mb-5">
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-primary">Kostenlose Anfrage</p>
+                  <span className="text-xs text-gray-400 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+                    Termine verfügbar
+                  </span>
+                </div>
+                <h3 className="font-heading text-2xl font-black text-gray-900">Jetzt Festpreisangebot sichern</h3>
+                <p className="text-sm text-gray-400 mt-1">In 3 Schritten – dauert nur 60 Sekunden</p>
               </div>
               <MultiStepForm />
             </div>

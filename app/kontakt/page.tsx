@@ -61,9 +61,16 @@ export default function Kontakt() {
 
           {/* Formular */}
           <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
-            <div className="mb-6">
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary">Kostenlose Anfrage</p>
-              <h2 className="font-heading text-2xl font-black text-gray-900 mt-1">Jetzt Angebot anfordern</h2>
+            <div className="mb-5">
+              <div className="flex items-center justify-between mb-1">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">Kostenlose Anfrage</p>
+                <span className="text-xs text-gray-400 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+                  Termine verfügbar
+                </span>
+              </div>
+              <h2 className="font-heading text-2xl font-black text-gray-900">Jetzt Festpreisangebot sichern</h2>
+              <p className="text-sm text-gray-400 mt-1">In 3 Schritten – dauert nur 60 Sekunden. Keine Anzahlung, kein Risiko.</p>
             </div>
             <MultiStepForm />
           </div>
