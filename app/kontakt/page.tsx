@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHero, CtaBanner } from '../../components/Shared'
 import { PhoneIcon, MailIcon, MapPinIcon, ClockIcon } from '../../components/Icons'
+import { MultiStepForm } from '../../components/MultiStepForm'
 
 export const metadata: Metadata = {
   title: 'Kontakt – Collectus Entrümpelung Ahlen',
@@ -58,18 +59,13 @@ export default function Kontakt() {
             </div>
           </div>
 
-          {/* Karte */}
-          <div className="rounded-3xl overflow-hidden border border-gray-200 shadow-sm h-[400px] lg:h-auto">
-            <iframe
-              title="Collectus Entrümpelung Standort"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2468.5!2d7.8899!3d51.7631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b98b0a0a0a0a0a%3A0x0!2sLessingstra%C3%9Fe%2062%2C%2059227%20Ahlen!5e0!3m2!1sde!2sde!4v1700000000000!5m2!1sde!2sde"
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: 400 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          {/* Formular */}
+          <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+            <div className="mb-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary">Kostenlose Anfrage</p>
+              <h2 className="font-heading text-2xl font-black text-gray-900 mt-1">Jetzt Angebot anfordern</h2>
+            </div>
+            <MultiStepForm />
           </div>
         </div>
       </section>

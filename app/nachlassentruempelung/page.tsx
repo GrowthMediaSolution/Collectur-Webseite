@@ -108,7 +108,7 @@ export default function Nachlassentruempelung() {
               Rechtsanwälten oder Hausverwaltungen.
             </p>
             <p>
-              Unser Einsatzgebiet umfasst Ahlen, Beckum, Hamm, Warendorf und den gesamten Umkreis von 40–50 km.
+              Unser Einsatzgebiet umfasst Ahlen, Beckum, Hamm, Warendorf und die gesamte Region.
               Die Besichtigung ist immer kostenlos. Rufen Sie uns an – wir sind für Sie da.
             </p>
           </div>

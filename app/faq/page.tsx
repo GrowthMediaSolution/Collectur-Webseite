@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: 'Wie weit ist euer Einsatzgebiet?',
-    a: 'Wir sind in Ahlen und einem Umkreis von 40–50 km für Sie im Einsatz. Dazu gehören unter anderem Beckum, Hamm, Warendorf, Oelde, Drensteinfurt und Sendenhorst.',
+    a: 'Wir sind in Ahlen und der gesamten Region für Sie im Einsatz. Dazu gehören unter anderem Beckum, Hamm, Warendorf, Oelde, Drensteinfurt und Sendenhorst.',
   },
   {
     q: 'Muss ich bei der Entrümpelung anwesend sein?',

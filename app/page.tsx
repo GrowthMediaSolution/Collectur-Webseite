@@ -4,6 +4,7 @@ import {
   PhoneIcon, MailIcon, MapPinIcon, CheckCircleIcon, ShieldCheckIcon,
   SparklesIcon, TruckIcon, RecycleIcon, ClockIcon, HomeIcon, ArchiveIcon,
 } from '../components/Icons'
+import { MultiStepForm } from '../components/MultiStepForm'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Ahlen – Wohnungsauflösung & Haushaltsauflösung | Collectus',
@@ -82,7 +83,7 @@ function Hero() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary-50 px-4 py-1.5 text-sm font-semibold text-primary mb-6 shadow-sm shadow-primary/5">
               <MapPinIcon className="w-4 h-4" />
-              Ahlen & Umgebung · 40-50 km Umkreis
+              Ahlen & Umgebung
             </div>
 
             <h1 className="font-heading text-[2.9rem] leading-[1.02] tracking-tight text-gray-900 sm:text-[3.7rem] xl:text-[4.35rem] font-black mb-6">
@@ -283,7 +284,7 @@ function ServiceArea() {
             Einsatzgebiet im Umkreis von Ahlen
           </h2>
           <p className="text-gray-400 mt-3 max-w-xl mx-auto">
-            Wir sind in einem Radius von ca. 40–50 km um Ahlen für Sie unterwegs – in diesen und vielen weiteren Orten.
+            Wir sind in Ahlen und der gesamten Region für Sie unterwegs – in diesen und vielen weiteren Orten.
           </p>
         </div>
 
@@ -363,28 +364,12 @@ function Contact() {
           </div>
 
           <div className="flex items-center">
-            <div className="w-full bg-gradient-to-br from-primary to-primary-dark rounded-3xl p-10 text-white text-center shadow-2xl shadow-primary/30">
-              <h3 className="font-heading text-2xl sm:text-3xl font-black mb-3">Jetzt kostenlos anfragen</h3>
-              <p className="text-white/80 mb-8 max-w-sm mx-auto">
-                Keine versteckten Kosten. Wir besichtigen kostenlos vor Ort und erstellen Ihnen ein faires Festpreisangebot.
-              </p>
-
-              <div className="space-y-3">
-                <a
-                  href="tel:023829661456"
-                  className="flex items-center justify-center gap-2.5 w-full bg-white text-primary font-bold py-4 rounded-2xl hover:bg-gray-50 transition-colors text-lg shadow-lg"
-                >
-                  <PhoneIcon className="w-5 h-5" />
-                  02382 9661456
-                </a>
-                <a
-                  href="mailto:info@rundumshausserviceleistungen.de"
-                  className="flex items-center justify-center gap-2.5 w-full bg-white/15 text-white font-semibold py-4 rounded-2xl hover:bg-white/25 transition-colors border border-white/20"
-                >
-                  <MailIcon className="w-5 h-5" />
-                  E-Mail schreiben
-                </a>
+            <div className="w-full rounded-3xl border border-gray-200 bg-white p-8 shadow-xl shadow-gray-100">
+              <div className="mb-6">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">Kostenlose Anfrage</p>
+                <h3 className="font-heading text-2xl font-black text-gray-900 mt-1">Jetzt Angebot anfordern</h3>
               </div>
+              <MultiStepForm />
             </div>
           </div>
         </div>

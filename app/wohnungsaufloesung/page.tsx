@@ -100,7 +100,7 @@ export default function Wohnungsaufloesung() {
               übernehmen wir auch kleinere Renovierungsarbeiten wie das Entfernen von Tapeten oder Bodenbelägen.
             </p>
             <p>
-              Unser Einsatzgebiet erstreckt sich über einen Umkreis von 40–50 km rund um Ahlen. Dazu gehören unter anderem Beckum,
+              Unser Einsatzgebiet umfasst Ahlen und die umliegende Region. Dazu gehören unter anderem Beckum,
               Hamm, Warendorf, Oelde, Drensteinfurt und Sendenhorst. Die Besichtigung vor Ort ist grundsätzlich kostenlos –
               wir erstellen Ihnen daraufhin ein transparentes Festpreisangebot ohne versteckte Kosten.
             </p>

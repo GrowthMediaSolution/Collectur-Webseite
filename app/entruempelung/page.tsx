@@ -99,7 +99,7 @@ export default function Entruempelung() {
               möglich – sprechen Sie uns einfach an.
             </p>
             <p>
-              Wir sind in Ahlen, Beckum, Hamm, Warendorf, Oelde und dem gesamten Umkreis von 40–50 km für Sie im Einsatz.
+              Wir sind in Ahlen, Beckum, Hamm, Warendorf, Oelde und der gesamten Region für Sie im Einsatz.
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">

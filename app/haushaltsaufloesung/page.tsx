@@ -104,7 +104,7 @@ export default function Haushaltsaufloesung() {
             </p>
             <p>
               Unser Einsatzgebiet umfasst Ahlen, Beckum, Hamm, Warendorf, Oelde, Drensteinfurt, Sendenhorst und
-              weitere Orte im Umkreis von 40–50 km. Die Besichtigung ist immer kostenlos.
+              weitere Orte in der Region. Die Besichtigung ist immer kostenlos.
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
