@@ -89,7 +89,7 @@ function Hero() {
               </div>
               <div className="inline-flex items-center gap-1.5 rounded-full border border-yellow-200 bg-yellow-50 px-4 py-1.5 text-sm font-semibold text-yellow-700 shadow-sm">
                 <span className="text-yellow-400 tracking-tight leading-none">★★★★★</span>
-                500+ zufriedene Kunden
+                Familienbetrieb aus Ahlen
               </div>
             </div>
 
@@ -395,7 +395,7 @@ function Contact() {
             <div className="mt-6 flex items-center gap-3 p-4 rounded-2xl bg-gray-50 border border-gray-100">
               <div className="text-yellow-400 text-xl leading-none tracking-tight">★★★★★</div>
               <div>
-                <p className="text-sm font-semibold text-gray-900">Über 500 Aufträge in der Region</p>
+                <p className="text-sm font-semibold text-gray-900">Top-bewertet auf Google</p>
                 <p className="text-xs text-gray-500">„Schnell, zuverlässig und sauber – genau wie versprochen."</p>
               </div>
             </div>
