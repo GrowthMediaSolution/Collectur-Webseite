@@ -36,7 +36,7 @@ export default function Footer() {
               <li><Link href="/gartenraeumung" title="Gartenräumung – Collectus" className="hover:text-primary-light transition-colors">Gartenräumung</Link></li>
               <li><Link href="/elektroschrott-entsorgung" title="Elektroschrott entsorgen – Collectus" className="hover:text-primary-light transition-colors">Elektroschrott</Link></li>
               <li><Link href="/moebel-entsorgung" title="Möbel entsorgen – Collectus" className="hover:text-primary-light transition-colors">Möbel entsorgen</Link></li>
-              <li><Link href="/seniorenentruempelung" title="Seniorenumzug & Entrümpelung – Collectus" className="hover:text-primary-light transition-colors">Seniorenumzug</Link></li>
+              <li><Link href="/seniorenentruempelung" title="Seniorenservice & Entrümpelung – Collectus" className="hover:text-primary-light transition-colors">Seniorenservice</Link></li>
               <li><Link href="/entruempelung-auszug" title="Entrümpelung bei Auszug – Collectus" className="hover:text-primary-light transition-colors">Entrümpelung Auszug</Link></li>
               <li><Link href="/entruempelung-kosten" title="Entrümpelung Kosten & Preise – Collectus" className="hover:text-primary-light transition-colors">Kosten & Preise</Link></li>
             </ul>

@@ -5,29 +5,29 @@ import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, MapPinIcon, ShieldCheckIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
-  title: 'Seniorenumzug Ahlen – Einfühlsame Entrümpelung | Collectus',
-  description: 'Einfühlsame Seniorenentriümpelung in Ahlen. Haushalt verkleinern mit Verständnis und Respekt. Kostenlose Beratung vor Ort.',
+  title: 'Seniorenservice Ahlen – Einfühlsame Entrümpelung für Senioren | Collectus',
+  description: 'Einfühlsame Entrümpelung für Senioren in Ahlen. Seniorenwohnungen und Heimzimmer behutsam räumen – mit Verständnis und Respekt. Kostenlose Beratung vor Ort.',
   alternates: { canonical: '/seniorenentruempelung' },
 }
 
 const leistungen = [
   'Begleitung beim Verkleinern des Haushalts',
-  'Schonende Räumung mit Rücksicht auf persönliche Erinnerungsstücke',
-  'Transport von zu übernehmenden Möbeln ins neue Zuhause',
+  'Schonende Räumung von Seniorenwohnungen und Zimmern in Pflegeheimen',
+  'Sorgsamer Umgang mit persönlichen Erinnerungsstücken',
   'Entsorgung aller nicht mehr benötigten Gegenstände',
   'Koordination mit Angehörigen, Betreuern oder Pflegediensten',
-  'Besenreine Übergabe der alten Wohnung',
+  'Besenreine Übergabe der Wohnung oder des Zimmers',
 ]
 
 export default function Seniorenentruempelung() {
   return (
     <>
-      <LocalBusinessSchema serviceName="Seniorenumzug" areaServed="Ahlen" />
+      <LocalBusinessSchema serviceName="Seniorenservice" areaServed="Ahlen" />
       <PageHero
-        title="Seniorenumzug &"
+        title="Seniorenservice &"
         highlight="Seniorenentriümpelung"
-        description="Einfühlsame Entrümpelung für Senioren in Ahlen und Umgebung. Wir helfen beim Verkleinern des Haushalts – behutsam, persönlich und mit viel Verständnis."
-        breadcrumb="Seniorenumzug"
+        description="Einfühlsame Entrümpelung für Senioren in Ahlen und Umgebung. Wir räumen Seniorenwohnungen und Heimzimmer behutsam und respektvoll – mit Zeit und Verständnis."
+        breadcrumb="Seniorenservice"
       />
 
       <section className="py-16 md:py-20">
@@ -38,9 +38,10 @@ export default function Seniorenentruempelung() {
               Entrümpelung für Senioren – mit Herz und Verstand
             </h2>
             <p className="text-gray-500 leading-relaxed mb-6">
-              Im Alter verändert sich vieles: Ein Umzug in eine kleinere Wohnung, ins betreute Wohnen
-              oder zu den Kindern steht an. Der Haushalt muss verkleinert werden – und das fällt vielen
-              Senioren verständlicherweise schwer. Hier helfen wir einfühlsam und professionell.
+              Im Alter verändert sich vieles: Der Einzug ins betreute Wohnen oder in ein Pflegeheim
+              steht an, oder eine Seniorenwohnung muss nach einem Todesfall aufgelöst werden.
+              Der Haushalt muss verkleinert oder geräumt werden – und das fällt oft schwer.
+              Hier helfen wir einfühlsam und professionell.
             </p>
             <p className="text-gray-500 leading-relaxed mb-8">
               Collectus Entrümpelung begleitet Senioren und ihre Angehörigen bei der Verkleinerung
@@ -72,7 +73,7 @@ export default function Seniorenentruempelung() {
                 { step: '01', title: 'Persönliches Gespräch', desc: 'Wir klären den Umfang in Ruhe – bei Ihnen zu Hause.' },
                 { step: '02', title: 'Gemeinsam sortieren', desc: 'Was bleibt, was kommt mit, was wird entsorgt.' },
                 { step: '03', title: 'Haushalt räumen', desc: 'Wir entrümpeln behutsam und professionell.' },
-                { step: '04', title: 'Übergabe', desc: 'Die alte Wohnung ist besenrein, die neue startklar.' },
+                { step: '04', title: 'Übergabe', desc: 'Die Wohnung oder das Zimmer ist besenrein übergeben – für Sie oder die Hausverwaltung.' },
               ].map((s) => (
                 <div key={s.step} className="flex gap-4">
                   <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-md shadow-primary/20">
@@ -92,13 +93,14 @@ export default function Seniorenentruempelung() {
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-5">
           <h2 className="font-heading text-2xl sm:text-3xl font-black text-gray-900 mb-6">
-            Seniorenumzug und Haushalt verkleinern
+            Seniorenservice – Haushalt verkleinern und Wohnungen räumen
           </h2>
           <div className="space-y-4 text-gray-600 leading-relaxed">
             <p>
-              Der Umzug im Alter ist eine große Veränderung. Viele Senioren leben seit Jahrzehnten
-              in ihrem Zuhause und haben eine emotionale Bindung an viele Gegenstände. Wir verstehen
-              das und arbeiten mit der nötigen Sensibilität.
+              Ob Seniorenwohnung, betreutes Wohnen oder Zimmer im Pflegeheim – wir übernehmen die
+              Räumung behutsam und zuverlässig. Viele Senioren leben seit Jahrzehnten in ihrem
+              Zuhause und haben eine tiefe emotionale Bindung an viele Gegenstände. Wir verstehen
+              das und arbeiten mit der nötigen Sensibilität und Geduld.
             </p>
             <p>
               Auf Wunsch stimmen wir uns auch mit Angehörigen, Betreuern oder der Hausverwaltung ab.
@@ -106,7 +108,7 @@ export default function Seniorenentruempelung() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Seniorenumzug Ahlen', 'Entrümpelung für Senioren', 'Haushalt verkleinern', 'Seniorenentriümpelung Kosten', 'Wohnung verkleinern Hilfe'].map(tag => (
+            {['Seniorenservice Ahlen', 'Entrümpelung für Senioren', 'Haushalt verkleinern', 'Heimzimmer entrümpeln', 'Wohnung verkleinern Hilfe'].map(tag => (
               <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
                 <MapPinIcon className="w-3 h-3" />{tag}
               </span>

@@ -82,7 +82,7 @@ function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,420px)] lg:gap-14">
           <div className="max-w-3xl">
             {/* Badges */}
-            <div className="flex flex-wrap items-center gap-2 mb-6">
+            <div className="flex flex-wrap items-center gap-2 mb-4">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary-50 px-4 py-1.5 text-sm font-semibold text-primary shadow-sm shadow-primary/5">
                 <MapPinIcon className="w-4 h-4" />
                 Ahlen & Umgebung
@@ -93,13 +93,18 @@ function Hero() {
               </div>
             </div>
 
+            {/* Personal touch */}
+            <p className="text-[15px] text-gray-500 mb-5 leading-relaxed">
+              Kleines Team aus Ahlen – persönlich erreichbar, direkt an Ihrer Seite.
+            </p>
+
             <h1 className="font-heading text-[2.9rem] leading-[1.02] tracking-tight text-gray-900 sm:text-[3.7rem] xl:text-[4.35rem] font-black mb-6">
               Professionelle <span className="text-primary">Entrümpelung</span> mit klarer, sauberer Übergabe
             </h1>
 
             <p className="max-w-2xl text-lg leading-relaxed text-gray-500 sm:text-xl mb-8">
               Wohnungsauflösungen, Haushaltsauflösungen und Entrümpelungen in Ahlen und Umgebung.
-              Zuverlässig organisiert, pünktlich umgesetzt und auf Wunsch komplett besenrein übergeben.
+              Wir kümmern uns persönlich, pünktlich und ganz ohne versteckte Kosten.
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
@@ -148,6 +153,19 @@ function Hero() {
                   Haftpflichtversichert
                 </div>
                 <p className="mt-1 text-sm text-gray-500">Sicher, planbar und professionell umgesetzt.</p>
+              </div>
+            </div>
+
+            {/* Personal touch – founder signature */}
+            <div className="mt-6 flex items-center gap-3.5 rounded-2xl border border-gray-100 bg-white/70 px-4 py-3.5 shadow-sm backdrop-blur-sm max-w-sm">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base font-black text-primary select-none">
+                A
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 italic leading-snug">
+                  „Wir nehmen uns Zeit – für Sie und für die Dinge, die Ihnen wichtig sind."
+                </p>
+                <p className="mt-1 text-xs text-gray-400">Abraham Osmani, Inhaber</p>
               </div>
             </div>
           </div>

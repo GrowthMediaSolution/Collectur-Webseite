@@ -23,7 +23,7 @@ const navLinks = [
       { href: '/elektroschrott-entsorgung', label: 'Elektroschrott-Entsorgung' },
       { href: '/moebel-entsorgung', label: 'Möbel entsorgen' },
       { href: '/entruempelung-auszug', label: 'Entrümpelung bei Auszug' },
-      { href: '/seniorenentruempelung', label: 'Seniorenumzug' },
+      { href: '/seniorenentruempelung', label: 'Seniorenservice' },
       { href: '/entruempelung-kosten', label: 'Kosten & Preise' },
     ],
   },
