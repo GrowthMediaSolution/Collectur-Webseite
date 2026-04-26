@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { PageHero, CtaBanner, RelatedLinks } from '../../components/Shared'
 import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, MapPinIcon, ShieldCheckIcon } from '../../components/Icons'
-import SeniorenCareScene from '../../components/illustrations/SeniorenCareScene'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Seniorenservice Ahlen – Einfühlsame Entrümpelung',
@@ -60,8 +60,16 @@ export default function Seniorenentruempelung() {
           </div>
 
           <div className="bg-gradient-to-br from-amber-50 via-white to-primary-50 rounded-3xl p-8 border border-amber-100 overflow-hidden">
-            {/* Illustration */}
-            <SeniorenCareScene className="w-full h-auto mb-6 rounded-2xl" />
+            {/* Foto Seniorenservice */}
+            <div className="rounded-2xl overflow-hidden mb-6 shadow-lg">
+              <Image
+                src="/images/seniorenservice.png"
+                alt="Einfühlsamer Seniorenservice – Collectus Entrümpelung Ahlen"
+                width={1024}
+                height={1024}
+                className="w-full h-64 object-cover object-center"
+              />
+            </div>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center">
                 <ShieldCheckIcon />

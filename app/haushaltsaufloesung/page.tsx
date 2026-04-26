@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { PageHero, CtaBanner, RelatedLinks } from '../../components/Shared'
 import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, SparklesIcon, MapPinIcon } from '../../components/Icons'
@@ -53,6 +54,16 @@ export default function Haushaltsaufloesung() {
           </div>
 
           <div className="bg-gradient-to-br from-primary-50 via-white to-primary-100 rounded-3xl p-8 border border-primary/10">
+            {/* Foto */}
+            <div className="rounded-2xl overflow-hidden mb-6 shadow-lg">
+              <Image
+                src="/images/wohnung-leer.png"
+                alt="Besenrein übergebene Wohnung nach Haushaltsauflösung durch Collectus"
+                width={1792}
+                height={1024}
+                className="w-full h-48 object-cover object-center"
+              />
+            </div>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center">
                 <SparklesIcon />

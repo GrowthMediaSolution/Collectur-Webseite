@@ -5,7 +5,7 @@ import {
   SparklesIcon, TruckIcon, RecycleIcon, HomeIcon, ArchiveIcon,
 } from '../components/Icons'
 import { MultiStepForm } from '../components/MultiStepForm'
-import EntruempelungScene from '../components/illustrations/EntruempelungScene'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Ahlen – Wohnungsauflösung & Haushaltsauflösung',
@@ -161,7 +161,7 @@ function Hero() {
               {/* Bildslot: /public/team/abraham.jpg austauschen, wenn Foto vorhanden */}
               <div className="relative shrink-0">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-xl font-black text-primary select-none overflow-hidden ring-2 ring-primary/20">
-                  A
+                  <Image src="/images/team.png" alt="Abraham Osmani – Inhaber Collectus" width={56} height={56} className="object-cover w-full h-full" />
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-green-400 ring-2 ring-white" title="Online" />
               </div>
@@ -221,9 +221,16 @@ function Hero() {
           </div>
         </div>
 
-        {/* Illustration – full-width beneath two-column hero */}
-        <div className="mt-14 flex justify-center">
-          <EntruempelungScene className="w-full max-w-2xl h-auto drop-shadow-sm" />
+        {/* Hero-Foto – full-width beneath two-column hero */}
+        <div className="mt-14 rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
+          <Image
+            src="/images/hero.png"
+            alt="Collectus Team bei der professionellen Entrümpelung in Ahlen"
+            width={1792}
+            height={1024}
+            className="w-full h-auto object-cover"
+            priority
+          />
         </div>
       </div>
     </section>
