@@ -5,7 +5,8 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 const TO = 'info@rundumshausserviceleistungen.de'
-const FROM = 'Collectus Anfrage <info@collectus-entruempelung.de>'
+// TODO: switch back to <info@collectus-entruempelung.de> after domain is verified on resend.com/domains
+const FROM = 'Collectus Anfrage <onboarding@resend.dev>'
 
 export async function POST(req: Request) {
   try {
