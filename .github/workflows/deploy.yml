@@ -79,3 +79,8 @@ jobs:
              pm2 describe ${{ steps.proj.outputs.name }} > /dev/null 2>&1 \
                && pm2 restart ${{ steps.proj.outputs.name }} \
                || SMTP_PASS='${{ secrets.SMTP_PASS }}' pm2 start server.js --name ${{ steps.proj.outputs.name }}"
+
+      - name: Diagnose VPS state
+        run: |
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "pm2 list && echo '=== NGINX ===' && cat /etc/nginx/sites-enabled/* 2>/dev/null || cat /etc/nginx/conf.d/*.conf 2>/dev/null || echo 'no nginx conf found' && echo '=== PORTS ===' && ss -tlnp | grep node || netstat -tlnp 2>/dev/null | grep node"
