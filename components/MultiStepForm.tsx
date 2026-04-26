@@ -58,10 +58,23 @@ export function MultiStepForm() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(data),
       })
+      if (!res.ok) throw new Error('API not available')
       if (!res.ok) throw new Error('Fehler beim Senden.')
       setDone(true)
     } catch {
-      setError('Die Anfrage konnte leider nicht gesendet werden. Bitte rufen Sie uns direkt an: 02382 9661456')
+      // Fallback: open mailto
+      const body = [
+        `Leistung: ${data.service}`,
+        `PLZ/Ort: ${data.plz}`,
+        data.flaeche ? `Fläche ca.: ${data.flaeche} m²` : '',
+        data.zeitraum ? `Zeitraum: ${data.zeitraum}` : '',
+        `Name: ${data.name}`,
+        `Telefon: ${data.phone}`,
+        data.email ? `E-Mail: ${data.email}` : '',
+        data.message ? `Nachricht: ${data.message}` : '',
+      ].filter(Boolean).join('\n')
+      window.location.href = `mailto:info@collectus-entruempelung.de?subject=${encodeURIComponent(`Anfrage: ${data.service || 'Entrümpelung'}`)}&body=${encodeURIComponent(body)}`
+      setDone(true)
     } finally {
       setSending(false)
     }
