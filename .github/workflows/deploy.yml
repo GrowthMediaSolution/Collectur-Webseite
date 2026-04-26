@@ -85,13 +85,9 @@ jobs:
       - name: Diagnose VPS state
         run: |
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" "
-            echo '=== PANEL ===';
-            which plesk 2>/dev/null || which cpanel 2>/dev/null || ls /usr/local/cpanel 2>/dev/null || ls /opt/plesk 2>/dev/null || echo 'no known panel';
-            echo '=== APACHE VHOSTS ===';
-            find /var/www/vhosts /etc/apache2/plesk.conf.d /etc/httpd/conf.d /usr/local/apache/conf/vhosts -name '*collectus*' -o -name '*entruempelung*' 2>/dev/null | head -5;
-            find /var/www/vhosts -maxdepth 2 -name 'conf' -type d 2>/dev/null | head -10;
-            echo '=== COLLECTUS DIR ===';
-            ls /var/www/Collectur-Webseite/ | head -10;
-            echo '=== PORTS ===';
-            ss -tlnp | grep -v '3000\|3334\|43737\|34455' | grep node
+            pm2 logs Collectur-Webseite --lines 20 --nostream 2>&1;
+            echo '=== LS -LA ===';
+            ls -la /var/www/Collectur-Webseite/ | head -15;
+            echo '=== NODE VER ===';
+            node --version;
           "
