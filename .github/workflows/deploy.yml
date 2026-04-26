@@ -83,22 +83,25 @@ jobs:
              PORT=3020 pm2 start server.js --name ${{ steps.proj.outputs.name }} && \
              pm2 save"
 
-      - name: Configure Apache reverse proxy
-        run: |
-          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
-            "printf '<VirtualHost *:80>\n    ServerName collectus-entruempelung.de\n    ServerAlias www.collectus-entruempelung.de\n    ProxyPreserveHost On\n    ProxyPass / http://127.0.0.1:3020/\n    ProxyPassReverse / http://127.0.0.1:3020/\n    ErrorLog \${APACHE_LOG_DIR}/collectus-error.log\n    CustomLog \${APACHE_LOG_DIR}/collectus-access.log combined\n</VirtualHost>\n' | sudo tee /etc/apache2/sites-available/collectus-entruempelung.conf && \
-             sudo a2enmod proxy proxy_http 2>/dev/null || true && \
-             sudo a2ensite collectus-entruempelung 2>/dev/null || true && \
-             sudo apache2ctl configtest && sudo systemctl reload apache2 && echo 'Apache reloaded OK'"
-
-      - name: Diagnose VPS state
+      - name: Discover proxy setup (Caddy/Nginx)
         run: |
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" "
-            sleep 3;
-            echo '=== PM2 STATUS ===';
-            pm2 list 2>&1 | grep -E 'Collect|id';
+            echo '=== WHOAMI / SUDO ===';
+            id;
+            sudo -n true 2>&1 && echo 'SUDO_NOPASSWD=YES' || echo 'SUDO_NOPASSWD=NO';
+            echo '=== RUNNING WEB SERVERS ===';
+            ss -lntp 2>/dev/null | grep -E ':80|:443' | head -10;
+            echo '=== CADDY CONFIG ===';
+            ls -la /etc/caddy/ 2>/dev/null;
+            ls -la /etc/caddy/conf.d/ 2>/dev/null || true;
+            ls -la /etc/caddy/sites-enabled/ 2>/dev/null || true;
+            ls -la /etc/caddy/sites/ 2>/dev/null || true;
+            echo '=== CADDYFILE (head 80) ===';
+            cat /etc/caddy/Caddyfile 2>/dev/null | head -80 || sudo -n cat /etc/caddy/Caddyfile 2>/dev/null | head -80 || echo 'NO READ ACCESS';
+            echo '=== EXISTING SITE CONFIGS ===';
+            ls /var/www/ 2>/dev/null;
+            echo '=== PM2 LIST ===';
+            pm2 list 2>&1 | grep -v '^\$';
             echo '=== PORT 3020 ===';
-            ss -anp | grep 3020;
-            echo '=== APACHE CHECK ===';
-            sudo apache2ctl -S 2>&1 | grep -i 'collectus\|entruempelung\|error' | head -5;
+            ss -anp 2>/dev/null | grep 3020 || echo 'NOT LISTENING';
           "
