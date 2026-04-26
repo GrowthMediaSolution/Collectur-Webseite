@@ -33,6 +33,118 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Copy static assets into standalone
+        run: |
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+
+      - name: Derive project name from repo
+        id: proj
+        run: |
+          REPO="${GITHUB_REPOSITORY}"
+          NAME="${REPO#*/}"
+          echo "name=$NAME" >> $GITHUB_OUTPUT
+
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Ensure remote directory exists
+        run: |
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "mkdir -p /var/www/${{ steps.proj.outputs.name }}"
+
+      - name: Deploy standalone to VPS
+        run: |
+          rsync -avz --delete .next/standalone/ \
+            "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/${{ steps.proj.outputs.name }}/"
+
+      - name: Write .env.local and restart app
+        env:
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" bash -s << EOF
+            cat > /var/www/${{ steps.proj.outputs.name }}/.env.local <<ENVEOF
+SMTP_HOST=w01f7da9.kasserver.com
+SMTP_PORT=465
+SMTP_USER=info@collectus-entruempelung.de
+SMTP_PASS=${SMTP_PASS}
+ENVEOF
+            chmod 600 /var/www/${{ steps.proj.outputs.name }}/.env.local
+            npm install -g pm2 2>/dev/null || true
+            pm2 describe collectus > /dev/null 2>&1 \
+              && pm2 restart collectus \
+              || pm2 start /var/www/${{ steps.proj.outputs.name }}/server.js \
+                   --name collectus \
+                   --cwd /var/www/${{ steps.proj.outputs.name }} \
+                   -i 1
+            pm2 save
+          EOF
+
+      - name: Configure nginx proxy
+        run: |
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" bash -s << 'SSHEOF'
+            CONF=/etc/nginx/sites-available/${{ steps.proj.outputs.name }}
+            if [ ! -f "$CONF" ]; then
+              cat > "$CONF" << 'NGINXEOF'
+server {
+    listen 80;
+    server_name collectus-entruempelung.de www.collectus-entruempelung.de;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+NGINXEOF
+              ln -sf "$CONF" /etc/nginx/sites-enabled/
+              nginx -t && systemctl reload nginx
+            fi
+          SSHEOF
+
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-
+
+      - name: Build
+        run: npm run build
         env:
           NEXT_PUBLIC_FORMSPREE_ID: ${{ secrets.FORMSPREE_ID }}
 

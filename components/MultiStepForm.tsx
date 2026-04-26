@@ -53,21 +53,10 @@ export function MultiStepForm() {
     setSending(true)
     setError('')
     try {
-      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID
-      if (!formspreeId) throw new Error('Formspree nicht konfiguriert.')
-      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          leistung: data.service,
-          plz_ort: data.plz,
-          flaeche_m2: data.flaeche || '',
-          zeitraum: data.zeitraum || '',
-          name: data.name,
-          telefon: data.phone,
-          email: data.email || '',
-          nachricht: data.message || '',
-        }),
+        body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error('Fehler beim Senden.')
       setDone(true)
