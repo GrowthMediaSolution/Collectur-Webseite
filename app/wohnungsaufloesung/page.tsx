@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { PageHero, CtaBanner, RelatedLinks } from '../../components/Shared'
 import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, HomeIcon, MapPinIcon } from '../../components/Icons'
@@ -61,6 +62,28 @@ export default function Wohnungsaufloesung() {
           </div>
 
           <div className="bg-gradient-to-br from-primary-50 via-white to-primary-100 rounded-3xl p-8 border border-primary/10">
+            {/* Real job photos */}
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="rounded-xl overflow-hidden shadow-sm">
+                <Image
+                  src="/images/wohnzimmer-geraeumt-1.jpg"
+                  alt="Wohnzimmer nach der Räumung – besenrein"
+                  width={540}
+                  height={540}
+                  className="w-full h-32 object-cover object-center"
+                />
+              </div>
+              <div className="rounded-xl overflow-hidden shadow-sm">
+                <Image
+                  src="/images/wohnzimmer-geraeumt-2.jpg"
+                  alt="Weiteres Zimmer nach der Wohnungsauflösung"
+                  width={540}
+                  height={540}
+                  className="w-full h-32 object-cover object-center"
+                />
+              </div>
+            </div>
+            <p className="text-xs text-gray-400 text-center mb-5">Echte Ergebnisse – Fotos aus abgeschlossenen Aufträgen</p>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center">
                 <HomeIcon />

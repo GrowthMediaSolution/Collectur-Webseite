@@ -322,6 +322,68 @@ function Advantages() {
   )
 }
 
+function Gallery() {
+  const photos = [
+    {
+      src: '/images/wohnzimmer-geraeumt-1.jpg',
+      alt: 'Wohnzimmer nach der Räumung – besenrein übergeben',
+      label: 'Wohnzimmer – komplett geräumt',
+    },
+    {
+      src: '/images/keller-geraeumt.jpg',
+      alt: 'Geräumter Keller nach Kellerentrümpelung durch Collectus',
+      label: 'Keller – besenrein übergeben',
+    },
+    {
+      src: '/images/kueche-geraeumt.jpg',
+      alt: 'Küche vollständig geräumt und besenrein',
+      label: 'Küche – vollständig entleert',
+    },
+    {
+      src: '/images/bad-geraeumt-1.jpg',
+      alt: 'Bad nach der Entrümpelung durch Collectus Ahlen',
+      label: 'Bad – nach der Entrümpelung',
+    },
+  ]
+
+  return (
+    <section className="py-20 md:py-28 bg-gray-50">
+      <div className="max-w-6xl mx-auto px-5">
+        <div className="text-center mb-14">
+          <span className="text-primary font-semibold text-sm tracking-wider uppercase">Echte Ergebnisse</span>
+          <h2 className="font-heading text-3xl sm:text-4xl font-black text-gray-900 mt-2">Unsere Arbeit spricht für sich</h2>
+          <p className="text-gray-500 mt-3 max-w-xl mx-auto">
+            Fotos aus abgeschlossenen Aufträgen – so sehen Räume nach unserem Einsatz aus.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {photos.map((p) => (
+            <div key={p.src} className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-white">
+              <div className="relative h-56 sm:h-64">
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+              </div>
+              <div className="px-4 py-3 bg-white border-t border-gray-100">
+                <p className="text-sm font-semibold text-gray-700">{p.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-center text-sm text-gray-400 mt-6">
+          Alle Fotos aus echten Aufträgen in Ahlen und Umgebung.
+        </p>
+      </div>
+    </section>
+  )
+}
+
 function ServiceArea() {
   return (
     <section id="gebiet" className="py-20 md:py-28 bg-dark text-white relative overflow-hidden">
@@ -415,6 +477,20 @@ function Contact() {
                 <p className="text-xs text-gray-500">„Schnell, zuverlässig und sauber – genau wie versprochen."</p>
               </div>
             </div>
+
+            {/* Aufsteller – lokale Präsenz */}
+            <div className="mt-6 rounded-2xl overflow-hidden border border-gray-100 shadow-md">
+              <Image
+                src="/images/aufsteller-werbung.jpg"
+                alt="Collectus Entrümpelung – Aufsteller mit Leistungen und Kontakt vor Ort in Ahlen"
+                width={920}
+                height={1280}
+                className="w-full h-52 object-cover object-top"
+              />
+              <div className="px-4 py-3 bg-gray-50 border-t border-gray-100">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Wir sind vor Ort in der Region aktiv</p>
+              </div>
+            </div>
           </div>
 
           <div className="flex items-center">
@@ -498,6 +574,7 @@ export default function Home() {
       <SchemaOrg />
       <Hero />
       <Services />
+      <Gallery />
       <Advantages />
       <ServiceArea />
       <Contact />
