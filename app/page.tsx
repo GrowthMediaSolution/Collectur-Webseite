@@ -485,7 +485,7 @@ function Contact() {
                 alt="Collectus Entrümpelung – Aufsteller mit Leistungen und Kontakt vor Ort in Ahlen"
                 width={920}
                 height={1280}
-                className="w-full h-52 object-cover object-top"
+                className="w-full h-auto object-cover"
               />
               <div className="px-4 py-3 bg-gray-50 border-t border-gray-100">
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Wir sind vor Ort in der Region aktiv</p>

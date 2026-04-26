@@ -28,6 +28,8 @@ interface FormData {
 export function MultiStepForm() {
   const [step, setStep] = useState(0)
   const [done, setDone] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
   const [data, setData] = useState<FormData>({
     service: '',
     plz: '',
@@ -46,21 +48,34 @@ export function MultiStepForm() {
   function next() { setStep(s => s + 1) }
   function back() { setStep(s => s - 1) }
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault()
-    const body = [
-      `Leistung: ${data.service}`,
-      `PLZ/Ort: ${data.plz}`,
-      data.flaeche ? `Fläche ca.: ${data.flaeche} m²` : '',
-      data.zeitraum ? `Gewünschter Zeitraum: ${data.zeitraum}` : '',
-      `Name: ${data.name}`,
-      `Telefon: ${data.phone}`,
-      data.email ? `E-Mail: ${data.email}` : '',
-      data.message ? `Nachricht: ${data.message}` : '',
-    ].filter(Boolean).join('\n')
-
-    window.location.href = `mailto:info@rundumshausserviceleistungen.de?subject=${encodeURIComponent(`Anfrage: ${data.service || 'Entrümpelung'}`)}&body=${encodeURIComponent(body)}`
-    setDone(true)
+    setSending(true)
+    setError('')
+    try {
+      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID
+      if (!formspreeId) throw new Error('Formspree nicht konfiguriert.')
+      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          leistung: data.service,
+          plz_ort: data.plz,
+          flaeche_m2: data.flaeche || '',
+          zeitraum: data.zeitraum || '',
+          name: data.name,
+          telefon: data.phone,
+          email: data.email || '',
+          nachricht: data.message || '',
+        }),
+      })
+      if (!res.ok) throw new Error('Fehler beim Senden.')
+      setDone(true)
+    } catch {
+      setError('Die Anfrage konnte leider nicht gesendet werden. Bitte rufen Sie uns direkt an: 02382 9661456')
+    } finally {
+      setSending(false)
+    }
   }
 
   if (done) {
@@ -238,11 +253,13 @@ export function MultiStepForm() {
             </button>
             <button
               type="submit"
-              className="flex-1 bg-primary text-white font-bold py-3.5 rounded-2xl hover:bg-primary-dark transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20"
+              disabled={sending}
+              className="flex-1 bg-primary text-white font-bold py-3.5 rounded-2xl hover:bg-primary-dark transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Kostenlos anfragen →
+              {sending ? 'Wird gesendet …' : 'Kostenlos anfragen →'}
             </button>
           </div>
+          {error && <p className="text-xs text-red-500 text-center mt-3">{error}</p>}
           <p className="text-xs text-gray-400 text-center mt-3 leading-relaxed">
             Mit dem Absenden stimmen Sie zu, dass wir Ihre Angaben für die Bearbeitung Ihrer Anfrage verwenden dürfen.
             Mehr dazu in unserer{' '}
