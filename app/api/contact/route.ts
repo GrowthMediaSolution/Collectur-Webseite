@@ -3,8 +3,9 @@ import nodemailer from 'nodemailer'
 
 const transporter = nodemailer.createTransport({
   host: 'w01f7da9.kasserver.com',
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false,
+  requireTLS: true,
   auth: {
     user: 'info@collectus-entruempelung.de',
     pass: process.env.SMTP_PASS,

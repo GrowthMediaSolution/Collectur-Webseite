@@ -97,11 +97,14 @@ jobs:
           sleep 5
           echo '--- HEAD apex ---'
           curl -sI --max-time 10 https://collectus-entruempelung.de | head -3
+          echo '--- VPS SMTP reachability ---'
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "for P in 25 465 587; do timeout 5 bash -c \"</dev/tcp/w01f7da9.kasserver.com/\$P\" 2>&1 && echo PORT_\$P=OPEN || echo PORT_\$P=BLOCKED; done"
           echo '--- API POST (smoke) ---'
           curl -sS --max-time 25 -X POST https://collectus-entruempelung.de/api/contact \
             -H 'Content-Type: application/json' \
             -d '{"name":"CI Smoke","email":"ci@example.com","phone":"000","service":"CI","message":"deploy smoke","plz":"48282"}' \
             -w '\nHTTP_%{http_code}\n' || echo 'API_TIMEOUT'
-          echo '--- pm2 logs (last 20) ---'
+          echo '--- pm2 error log (last 15) ---'
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
-            "pm2 logs ${{ steps.proj.outputs.name }} --lines 20 --nostream 2>&1 | tail -40"
+            "tail -15 ~/.pm2/logs/${{ steps.proj.outputs.name }}-error.log 2>&1"
