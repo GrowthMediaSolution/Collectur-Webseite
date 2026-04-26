@@ -76,11 +76,22 @@ jobs:
         run: |
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
             "cd /var/www/${{ steps.proj.outputs.name }} && \
-             pm2 describe ${{ steps.proj.outputs.name }} > /dev/null 2>&1 \
-               && PORT=3020 pm2 restart ${{ steps.proj.outputs.name }} --update-env \
-               || PORT=3020 pm2 start server.js --name ${{ steps.proj.outputs.name }}"
+             pm2 stop ${{ steps.proj.outputs.name }} 2>/dev/null || true && \
+             sleep 2 && \
+             pm2 delete ${{ steps.proj.outputs.name }} 2>/dev/null || true && \
+             PORT=3020 pm2 start server.js --name ${{ steps.proj.outputs.name }} && \
+             pm2 save"
 
       - name: Diagnose VPS state
         run: |
-          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
-            "pm2 logs Collectur-Webseite --lines 10 --nostream 2>&1; echo '=== APACHE SITES ==='; ls /etc/apache2/sites-enabled/ 2>/dev/null; find /etc/apache2/sites-enabled/ -type f -exec cat {} \; 2>/dev/null | grep -A5 -B5 'collectus\|entruempelung\|Proxy\|proxy' | head -40; echo '=== PORTS ==='; ss -tlnp | grep node"
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" "
+            echo '=== PANEL ===';
+            which plesk 2>/dev/null || which cpanel 2>/dev/null || ls /usr/local/cpanel 2>/dev/null || ls /opt/plesk 2>/dev/null || echo 'no known panel';
+            echo '=== APACHE VHOSTS ===';
+            find /var/www/vhosts /etc/apache2/plesk.conf.d /etc/httpd/conf.d /usr/local/apache/conf/vhosts -name '*collectus*' -o -name '*entruempelung*' 2>/dev/null | head -5;
+            find /var/www/vhosts -maxdepth 2 -name 'conf' -type d 2>/dev/null | head -10;
+            echo '=== COLLECTUS DIR ===';
+            ls /var/www/Collectur-Webseite/ | head -10;
+            echo '=== PORTS ===';
+            ss -tlnp | grep -v '3000\|3334\|43737\|34455' | grep node
+          "
