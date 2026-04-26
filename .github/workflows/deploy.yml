@@ -67,89 +67,17 @@ jobs:
           rsync -avz --delete .next/standalone/ \
             "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/${{ steps.proj.outputs.name }}/"
 
-      - name: Write .env.local and restart app
+      - name: Write env and restart
         env:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           PROJ: ${{ steps.proj.outputs.name }}
           VPS: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}
         run: |
-          ssh "$VPS" "
-            printf 'SMTP_HOST=w01f7da9.kasserver.com\nSMTP_PORT=465\nSMTP_USER=info@collectus-entruempelung.de\nSMTP_PASS=%s\n' '$SMTP_PASS' > /var/www/$PROJ/.env.local
-            chmod 600 /var/www/$PROJ/.env.local
-            which pm2 || npm install -g pm2
-            pm2 describe collectus > /dev/null 2>&1 && pm2 restart collectus || pm2 start /var/www/$PROJ/server.js --name collectus --cwd /var/www/$PROJ
-            pm2 save
-          "
+          ssh "$VPS" "printf 'SMTP_HOST=w01f7da9.kasserver.com\nSMTP_PORT=465\nSMTP_USER=info@collectus-entruempelung.de\nSMTP_PASS=%s\n' '$SMTP_PASS' > /var/www/$PROJ/.env.local && chmod 600 /var/www/$PROJ/.env.local && which pm2 || npm install -g pm2 && (pm2 describe collectus > /dev/null 2>&1 && pm2 restart collectus || pm2 start /var/www/$PROJ/server.js --name collectus --cwd /var/www/$PROJ) && pm2 save"
 
       - name: Configure nginx proxy
         env:
           PROJ: ${{ steps.proj.outputs.name }}
           VPS: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}
         run: |
-          ssh "$VPS" "
-            CONF=/etc/nginx/sites-available/$PROJ
-            if [ ! -f \"\$CONF\" ]; then
-              printf 'server {\n    listen 80;\n    server_name collectus-entruempelung.de www.collectus-entruempelung.de;\n    location / {\n        proxy_pass http://127.0.0.1:3000;\n        proxy_http_version 1.1;\n        proxy_set_header Host \$host;\n        proxy_set_header X-Real-IP \$remote_addr;\n        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;\n        proxy_set_header X-Forwarded-Proto \$scheme;\n    }\n}\n' > \"\$CONF\"
-              ln -sf \"\$CONF\" /etc/nginx/sites-enabled/
-              nginx -t && systemctl reload nginx
-            fi
-          "
-
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install deps
-        run: npm ci
-
-      - name: Cache Next.js build
-        uses: actions/cache@v4
-        with:
-          path: .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-
-
-      - name: Build
-        run: npm run build
-        env:
-          NEXT_PUBLIC_FORMSPREE_ID: ${{ secrets.FORMSPREE_ID }}
-
-      - name: Derive project name from repo
-        id: proj
-        run: |
-          REPO="${GITHUB_REPOSITORY}"
-          NAME="${REPO#*/}"
-          echo "name=$NAME" >> $GITHUB_OUTPUT
-
-      - name: Start SSH agent
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
-
-      - name: Add server to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
-
-      - name: Ensure remote directory exists
-        run: |
-          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
-            "mkdir -p /var/www/${{ steps.proj.outputs.name }}"
-
-      - name: Deploy to VPS (rsync)
-        run: |
-          rsync -avz --delete out/ \
-            "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/${{ steps.proj.outputs.name }}/"
+          ssh "$VPS" "CONF=/etc/nginx/sites-available/$PROJ; [ -f \"\$CONF\" ] || (printf 'server {\n  listen 80;\n  server_name collectus-entruempelung.de www.collectus-entruempelung.de;\n  location / {\n    proxy_pass http://127.0.0.1:3000;\n    proxy_http_version 1.1;\n    proxy_set_header Host \$host;\n    proxy_set_header X-Real-IP \$remote_addr;\n    proxy_set_header X-Forwarded-Proto \$scheme;\n  }\n}\n' > \"\$CONF\" && ln -sf \"\$CONF\" /etc/nginx/sites-enabled/ && nginx -t && systemctl reload nginx)"
