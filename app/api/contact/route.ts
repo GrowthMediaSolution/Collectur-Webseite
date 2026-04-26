@@ -4,8 +4,10 @@ import { Resend } from 'resend'
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-const TO = 'info@rundumshausserviceleistungen.de'
-// TODO: switch back to <info@collectus-entruempelung.de> after domain is verified on resend.com/domains
+// TODO after domain verification on resend.com/domains:
+//   - change FROM back to <info@collectus-entruempelung.de>
+//   - change TO back to info@rundumshausserviceleistungen.de
+const TO = 'info@collectus-entruempelung.de'
 const FROM = 'Collectus Anfrage <onboarding@resend.dev>'
 
 export async function POST(req: Request) {
