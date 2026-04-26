@@ -85,26 +85,11 @@ jobs:
 
       - name: Configure Apache reverse proxy
         run: |
-          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" "
-            # Create Apache vhost config for collectus-entruempelung.de
-            cat > /tmp/collectus-entruempelung.conf << 'APACHEEOF'
-<VirtualHost *:80>
-    ServerName collectus-entruempelung.de
-    ServerAlias www.collectus-entruempelung.de
-
-    ProxyPreserveHost On
-    ProxyPass / http://127.0.0.1:3020/
-    ProxyPassReverse / http://127.0.0.1:3020/
-
-    ErrorLog \${APACHE_LOG_DIR}/collectus-error.log
-    CustomLog \${APACHE_LOG_DIR}/collectus-access.log combined
-</VirtualHost>
-APACHEEOF
-            sudo mv /tmp/collectus-entruempelung.conf /etc/apache2/sites-available/collectus-entruempelung.conf
-            sudo a2enmod proxy proxy_http 2>/dev/null || true
-            sudo a2ensite collectus-entruempelung 2>/dev/null || true
-            sudo apache2ctl configtest && sudo systemctl reload apache2 || true
-          "
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "printf '<VirtualHost *:80>\n    ServerName collectus-entruempelung.de\n    ServerAlias www.collectus-entruempelung.de\n    ProxyPreserveHost On\n    ProxyPass / http://127.0.0.1:3020/\n    ProxyPassReverse / http://127.0.0.1:3020/\n    ErrorLog \${APACHE_LOG_DIR}/collectus-error.log\n    CustomLog \${APACHE_LOG_DIR}/collectus-access.log combined\n</VirtualHost>\n' | sudo tee /etc/apache2/sites-available/collectus-entruempelung.conf && \
+             sudo a2enmod proxy proxy_http 2>/dev/null || true && \
+             sudo a2ensite collectus-entruempelung 2>/dev/null || true && \
+             sudo apache2ctl configtest && sudo systemctl reload apache2 && echo 'Apache reloaded OK'"
 
       - name: Diagnose VPS state
         run: |
