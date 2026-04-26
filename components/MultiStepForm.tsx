@@ -55,26 +55,13 @@ export function MultiStepForm() {
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
-      if (!res.ok) throw new Error('API not available')
       if (!res.ok) throw new Error('Fehler beim Senden.')
       setDone(true)
     } catch {
-      // Fallback: open mailto
-      const body = [
-        `Leistung: ${data.service}`,
-        `PLZ/Ort: ${data.plz}`,
-        data.flaeche ? `Fläche ca.: ${data.flaeche} m²` : '',
-        data.zeitraum ? `Zeitraum: ${data.zeitraum}` : '',
-        `Name: ${data.name}`,
-        `Telefon: ${data.phone}`,
-        data.email ? `E-Mail: ${data.email}` : '',
-        data.message ? `Nachricht: ${data.message}` : '',
-      ].filter(Boolean).join('\n')
-      window.location.href = `mailto:info@collectus-entruempelung.de?subject=${encodeURIComponent(`Anfrage: ${data.service || 'Entrümpelung'}`)}&body=${encodeURIComponent(body)}`
-      setDone(true)
+      setError('Leider ist ein Fehler aufgetreten. Bitte rufen Sie uns direkt an: 02527 / 6 79 79 15')
     } finally {
       setSending(false)
     }

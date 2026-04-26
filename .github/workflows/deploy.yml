@@ -34,6 +34,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Assemble standalone bundle
+        run: |
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+
       - name: Derive project name from repo
         id: proj
         run: |
@@ -59,5 +64,18 @@ jobs:
 
       - name: Deploy to VPS (rsync)
         run: |
-          rsync -avz --delete out/ \
+          rsync -avz --delete .next/standalone/ \
             "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/${{ steps.proj.outputs.name }}/"
+
+      - name: Write .env on VPS
+        run: |
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "echo 'SMTP_PASS=${{ secrets.SMTP_PASS }}' > /var/www/${{ steps.proj.outputs.name }}/.env"
+
+      - name: Restart app with pm2
+        run: |
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "cd /var/www/${{ steps.proj.outputs.name }} && \
+             pm2 describe ${{ steps.proj.outputs.name }} > /dev/null 2>&1 \
+               && pm2 restart ${{ steps.proj.outputs.name }} \
+               || SMTP_PASS='${{ secrets.SMTP_PASS }}' pm2 start server.js --name ${{ steps.proj.outputs.name }}"
