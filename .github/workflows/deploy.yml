@@ -85,20 +85,11 @@ jobs:
 
       - name: Configure Caddy reverse proxy
         run: |
-          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" "
-            cat > /etc/caddy/sites/collectus.caddy <<'EOF'
-collectus-entruempelung.de, www.collectus-entruempelung.de {
-    encode zstd gzip
-    reverse_proxy 127.0.0.1:3020
-}
-EOF
-            echo '--- collectus.caddy ---';
-            cat /etc/caddy/sites/collectus.caddy;
-            echo '--- reload ---';
-            caddy reload --config /etc/caddy/Caddyfile 2>&1 || \
-              sudo -n systemctl reload caddy 2>&1 || \
-              echo 'RELOAD_FAILED';
-          "
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "printf 'collectus-entruempelung.de, www.collectus-entruempelung.de {\n    encode zstd gzip\n    reverse_proxy 127.0.0.1:3020\n}\n' > /etc/caddy/sites/collectus.caddy && \
+             echo '--- collectus.caddy ---' && cat /etc/caddy/sites/collectus.caddy && \
+             echo '--- reload ---' && \
+             (caddy reload --config /etc/caddy/Caddyfile 2>&1 || sudo -n systemctl reload caddy 2>&1 || echo RELOAD_FAILED)"
 
       - name: Verify site is live
         run: |
