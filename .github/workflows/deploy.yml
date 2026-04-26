@@ -80,7 +80,8 @@ jobs:
              pm2 delete ${{ steps.proj.outputs.name }} 2>/dev/null || true && \
              fuser -k 3020/tcp 2>/dev/null || true && \
              sleep 2 && \
-             PORT=3020 pm2 start server.js --name ${{ steps.proj.outputs.name }} && \
+             set -a && . ./.env && set +a && \
+             PORT=3020 pm2 start server.js --name ${{ steps.proj.outputs.name }} --update-env && \
              pm2 save"
 
       - name: Configure Caddy reverse proxy
@@ -93,10 +94,14 @@ jobs:
 
       - name: Verify site is live
         run: |
-          sleep 3
-          echo '--- HEAD ---';
-          curl -sI https://collectus-entruempelung.de | head -5
-          echo '--- HEAD www ---';
-          curl -sI https://www.collectus-entruempelung.de | head -5
-          echo '--- API ping (HEAD /api/contact) ---';
-          curl -sI -X POST https://collectus-entruempelung.de/api/contact -H 'Content-Type: application/json' -d '{}' | head -5
+          sleep 5
+          echo '--- HEAD apex ---'
+          curl -sI --max-time 10 https://collectus-entruempelung.de | head -3
+          echo '--- API POST (smoke) ---'
+          curl -sS --max-time 25 -X POST https://collectus-entruempelung.de/api/contact \
+            -H 'Content-Type: application/json' \
+            -d '{"name":"CI Smoke","email":"ci@example.com","phone":"000","service":"CI","message":"deploy smoke","plz":"48282"}' \
+            -w '\nHTTP_%{http_code}\n' || echo 'API_TIMEOUT'
+          echo '--- pm2 logs (last 20) ---'
+          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "pm2 logs ${{ steps.proj.outputs.name }} --lines 20 --nostream 2>&1 | tail -40"

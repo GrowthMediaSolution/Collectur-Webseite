@@ -9,6 +9,9 @@ const transporter = nodemailer.createTransport({
     user: 'info@collectus-entruempelung.de',
     pass: process.env.SMTP_PASS,
   },
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 15000,
 })
 
 export async function POST(req: Request) {
