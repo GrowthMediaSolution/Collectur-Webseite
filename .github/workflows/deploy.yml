@@ -83,25 +83,29 @@ jobs:
              PORT=3020 pm2 start server.js --name ${{ steps.proj.outputs.name }} && \
              pm2 save"
 
-      - name: Discover proxy setup (Caddy/Nginx)
+      - name: Configure Caddy reverse proxy
         run: |
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" "
-            echo '=== WHOAMI / SUDO ===';
-            id;
-            sudo -n true 2>&1 && echo 'SUDO_NOPASSWD=YES' || echo 'SUDO_NOPASSWD=NO';
-            echo '=== RUNNING WEB SERVERS ===';
-            ss -lntp 2>/dev/null | grep -E ':80|:443' | head -10;
-            echo '=== CADDY CONFIG ===';
-            ls -la /etc/caddy/ 2>/dev/null;
-            ls -la /etc/caddy/conf.d/ 2>/dev/null || true;
-            ls -la /etc/caddy/sites-enabled/ 2>/dev/null || true;
-            ls -la /etc/caddy/sites/ 2>/dev/null || true;
-            echo '=== CADDYFILE (head 80) ===';
-            cat /etc/caddy/Caddyfile 2>/dev/null | head -80 || sudo -n cat /etc/caddy/Caddyfile 2>/dev/null | head -80 || echo 'NO READ ACCESS';
-            echo '=== EXISTING SITE CONFIGS ===';
-            ls /var/www/ 2>/dev/null;
-            echo '=== PM2 LIST ===';
-            pm2 list 2>&1 | grep -v '^\$';
-            echo '=== PORT 3020 ===';
-            ss -anp 2>/dev/null | grep 3020 || echo 'NOT LISTENING';
+            cat > /etc/caddy/sites/collectus.caddy <<'EOF'
+collectus-entruempelung.de, www.collectus-entruempelung.de {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:3020
+}
+EOF
+            echo '--- collectus.caddy ---';
+            cat /etc/caddy/sites/collectus.caddy;
+            echo '--- reload ---';
+            caddy reload --config /etc/caddy/Caddyfile 2>&1 || \
+              sudo -n systemctl reload caddy 2>&1 || \
+              echo 'RELOAD_FAILED';
           "
+
+      - name: Verify site is live
+        run: |
+          sleep 3
+          echo '--- HEAD ---';
+          curl -sI https://collectus-entruempelung.de | head -5
+          echo '--- HEAD www ---';
+          curl -sI https://www.collectus-entruempelung.de | head -5
+          echo '--- API ping (HEAD /api/contact) ---';
+          curl -sI -X POST https://collectus-entruempelung.de/api/contact -H 'Content-Type: application/json' -d '{}' | head -5
