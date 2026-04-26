@@ -77,17 +77,19 @@ jobs:
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
             "cd /var/www/${{ steps.proj.outputs.name }} && \
              pm2 stop ${{ steps.proj.outputs.name }} 2>/dev/null || true && \
-             sleep 2 && \
              pm2 delete ${{ steps.proj.outputs.name }} 2>/dev/null || true && \
+             fuser -k 3020/tcp 2>/dev/null || true && \
+             sleep 2 && \
              PORT=3020 pm2 start server.js --name ${{ steps.proj.outputs.name }} && \
              pm2 save"
 
       - name: Diagnose VPS state
         run: |
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" "
-            pm2 logs Collectur-Webseite --lines 20 --nostream 2>&1;
-            echo '=== LS -LA ===';
-            ls -la /var/www/Collectur-Webseite/ | head -15;
-            echo '=== NODE VER ===';
-            node --version;
+            sleep 3;
+            pm2 logs Collectur-Webseite --lines 10 --nostream 2>&1;
+            echo '=== PORTS ===';
+            ss -anp | grep 3020;
+            echo '=== APACHE ROOT ===';
+            grep -r 'collectus\|entruempelung\|3020\|3000\|DocumentRoot\|ProxyPass' /etc/apache2/ 2>/dev/null | grep -v '.dpkg\|Binary' | head -20;
           "
