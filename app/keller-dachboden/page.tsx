@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { PageHero, CtaBanner, RelatedLinks } from '../../components/Shared'
 import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, ArchiveIcon, MapPinIcon } from '../../components/Icons'
@@ -53,6 +54,15 @@ export default function KellerDachboden() {
           </div>
 
           <div className="bg-gradient-to-br from-primary-50 via-white to-primary-100 rounded-3xl p-8 border border-primary/10">
+            <div className="rounded-2xl overflow-hidden mb-6 shadow-lg">
+              <Image
+                src="/images/keller-geraeumt.jpg"
+                alt="Geräumter Keller nach Kellerentrümpelung durch Collectus Ahlen"
+                width={1080}
+                height={1440}
+                className="w-full h-52 object-cover object-center"
+              />
+            </div>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center">
                 <ArchiveIcon />

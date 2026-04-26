@@ -161,7 +161,7 @@ function Hero() {
               {/* Bildslot: /public/team/abraham.jpg austauschen, wenn Foto vorhanden */}
               <div className="relative shrink-0">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-xl font-black text-primary select-none overflow-hidden ring-2 ring-primary/20">
-                  <Image src="/images/team.png" alt="Abraham Osmani – Inhaber Collectus" width={56} height={56} className="object-cover w-full h-full" />
+                  <Image src="/images/abraham-portrait.jpg" alt="Abraham Osmani – Inhaber Collectus" width={56} height={56} className="object-cover w-full h-full object-top" />
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-green-400 ring-2 ring-white" title="Online" />
               </div>
@@ -224,11 +224,11 @@ function Hero() {
         {/* Hero-Foto – full-width beneath two-column hero */}
         <div className="mt-14 rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
           <Image
-            src="/images/hero.png"
-            alt="Collectus Team bei der professionellen Entrümpelung in Ahlen"
-            width={1792}
-            height={1024}
-            className="w-full h-auto object-cover"
+            src="/images/abraham-garten.jpg"
+            alt="Abraham Osmani – Inhaber Collectus Entrümpelung Ahlen"
+            width={2000}
+            height={1333}
+            className="w-full h-auto object-cover max-h-[480px]"
             priority
           />
         </div>

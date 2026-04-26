@@ -57,10 +57,10 @@ export default function Haushaltsaufloesung() {
             {/* Foto */}
             <div className="rounded-2xl overflow-hidden mb-6 shadow-lg">
               <Image
-                src="/images/wohnung-leer.png"
-                alt="Besenrein übergebene Wohnung nach Haushaltsauflösung durch Collectus"
-                width={1792}
-                height={1024}
+                src="/images/wohnzimmer-geraeumt-1.jpg"
+                alt="Geräumtes Wohnzimmer nach Haushaltsauflösung durch Collectus Ahlen"
+                width={1080}
+                height={1080}
                 className="w-full h-48 object-cover object-center"
               />
             </div>
