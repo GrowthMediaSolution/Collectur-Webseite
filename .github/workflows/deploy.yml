@@ -83,4 +83,4 @@ jobs:
       - name: Diagnose VPS state
         run: |
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
-            "pm2 list && echo '=== NGINX ===' && cat /etc/nginx/sites-enabled/* 2>/dev/null || cat /etc/nginx/conf.d/*.conf 2>/dev/null || echo 'no nginx conf found' && echo '=== PORTS ===' && ss -tlnp | grep node || netstat -tlnp 2>/dev/null | grep node"
+            "echo '=== PM2 LOGS ===' && pm2 logs Collectur-Webseite --lines 30 --nostream 2>&1 && echo '=== NGINX FIND ===' && find /etc/nginx -name '*.conf' 2>/dev/null | head -20 && find /etc/apache2 -name '*.conf' 2>/dev/null | head -5 && echo '=== COLLECTUS ENV ===' && cat /var/www/Collectur-Webseite/.env 2>/dev/null"
