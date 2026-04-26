@@ -12,8 +12,8 @@ export function CtaBanner() {
 
         {/* Social Proof */}
         <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 text-sm font-semibold text-white mb-6">
-          <span className="text-yellow-300 tracking-tight">★★★★★</span>
-          <span>Über 500 zufriedene Kunden in der Region</span>
+          <span className="text-yellow-300 tracking-tight">♥</span>
+          <span>Persönlich aus Ahlen – ehrlich, fair, zuverlässig</span>
         </div>
 
         <h2 className="font-heading text-3xl sm:text-4xl font-black mb-3">

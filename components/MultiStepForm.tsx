@@ -243,8 +243,10 @@ export function MultiStepForm() {
               Kostenlos anfragen →
             </button>
           </div>
-          <p className="text-xs text-gray-400 text-center mt-3">
-            ✓ Keine Anzahlung &nbsp;·&nbsp; ✓ Kein Risiko &nbsp;·&nbsp; ✓ Kein Spam
+          <p className="text-xs text-gray-400 text-center mt-3 leading-relaxed">
+            Mit dem Absenden stimmen Sie zu, dass wir Ihre Angaben für die Bearbeitung Ihrer Anfrage verwenden dürfen.
+            Mehr dazu in unserer{' '}
+            <a href="/datenschutz" className="underline hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
           </p>
         </form>
       )}

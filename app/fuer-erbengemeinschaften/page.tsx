@@ -4,7 +4,7 @@ import { PageHero, CtaBanner } from '../../components/Shared'
 import { CheckCircleIcon, MapPinIcon, ShieldCheckIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
-  title: 'Entrümpelung für Erbengemeinschaften – Nachlassräumung | Collectus',
+  title: 'Entrümpelung für Erbengemeinschaften – Nachlassräumung',
   description: 'Professionelle Nachlassräumung für Erbengemeinschaften. Wir übernehmen die komplette Koordination und Räumung – neutral, fair und transparent.',
   alternates: { canonical: '/fuer-erbengemeinschaften' },
 }

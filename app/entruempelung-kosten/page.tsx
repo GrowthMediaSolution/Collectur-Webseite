@@ -5,7 +5,7 @@ import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, MapPinIcon, PhoneIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
-  title: 'Entrümpelung Kosten – Kostenlose Besichtigung & Festpreis | Collectus',
+  title: 'Entrümpelung Kosten – Festpreis & kostenlose Besichtigung',
   description: 'Was kostet eine Entrümpelung? Kostenlose Besichtigung vor Ort in Ahlen – verbindlicher Festpreis ohne versteckte Kosten.',
   alternates: { canonical: '/entruempelung-kosten' },
 }

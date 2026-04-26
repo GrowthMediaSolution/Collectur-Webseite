@@ -67,15 +67,13 @@ export default function Datenschutz() {
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-gray-900 mb-1">4. Google Maps</h2>
+            <h2 className="text-lg font-bold text-gray-900 mb-1">4. Kontaktformular</h2>
             <p>
-              Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited
-              (&quot;Google&quot;), Gordon House, Barrow Street, Dublin 4, Irland. Zur Nutzung der Funktionen
-              von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern. Diese Informationen werden
-              in der Regel an einen Server von Google in den USA übertragen und dort gespeichert.
-              Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer
-              Online-Angebote und an einer leichten Auffindbarkeit der von uns auf der Website angegebenen
-              Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.
+              Wenn Sie uns über das Kontaktformular auf dieser Website anfragen, werden Ihre angegebenen
+              Daten (Name, Telefon, E-Mail, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage
+              verwendet. Die Übertragung erfolgt verschlüsselt. Wir geben Ihre Daten nicht ohne Ihre
+              ausdrückliche Einwilligung weiter. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO
+              (Vertragsanbahnung).
             </p>
           </div>
 

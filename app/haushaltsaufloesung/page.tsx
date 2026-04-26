@@ -5,7 +5,7 @@ import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, SparklesIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
-  title: 'Haushaltsauflösung Ahlen – Einfühlsam & Professionell | Collectus',
+  title: 'Haushaltsauflösung Ahlen – Einfühlsam & Professionell',
   description: 'Komplette Haushaltsauflösung in Ahlen. Einfühlsam und besenrein – nach Todesfall, Pflegeheim oder Umzug. Kostenlose Besichtigung, Festpreis.',
   alternates: { canonical: '/haushaltsaufloesung' },
 }

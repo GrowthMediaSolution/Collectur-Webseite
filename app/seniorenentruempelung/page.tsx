@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { PageHero, CtaBanner, RelatedLinks } from '../../components/Shared'
 import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, MapPinIcon, ShieldCheckIcon } from '../../components/Icons'
+import SeniorenCareScene from '../../components/illustrations/SeniorenCareScene'
 
 export const metadata: Metadata = {
-  title: 'Seniorenservice Ahlen – Einfühlsame Entrümpelung für Senioren | Collectus',
+  title: 'Seniorenservice Ahlen – Einfühlsame Entrümpelung',
   description: 'Einfühlsame Entrümpelung für Senioren in Ahlen. Seniorenwohnungen und Heimzimmer behutsam räumen – mit Verständnis und Respekt. Kostenlose Beratung vor Ort.',
   alternates: { canonical: '/seniorenentruempelung' },
 }
@@ -25,7 +26,7 @@ export default function Seniorenentruempelung() {
       <LocalBusinessSchema serviceName="Seniorenservice" areaServed="Ahlen" />
       <PageHero
         title="Seniorenservice &"
-        highlight="Seniorenentriümpelung"
+        highlight="Seniorenentrümpelung"
         description="Einfühlsame Entrümpelung für Senioren in Ahlen und Umgebung. Wir räumen Seniorenwohnungen und Heimzimmer behutsam und respektvoll – mit Zeit und Verständnis."
         breadcrumb="Seniorenservice"
       />
@@ -58,7 +59,9 @@ export default function Seniorenentruempelung() {
             </ul>
           </div>
 
-          <div className="bg-gradient-to-br from-primary-50 via-white to-primary-100 rounded-3xl p-8 border border-primary/10">
+          <div className="bg-gradient-to-br from-amber-50 via-white to-primary-50 rounded-3xl p-8 border border-amber-100 overflow-hidden">
+            {/* Illustration */}
+            <SeniorenCareScene className="w-full h-auto mb-6 rounded-2xl" />
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center">
                 <ShieldCheckIcon />

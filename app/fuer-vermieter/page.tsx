@@ -5,7 +5,7 @@ import { CheckCircleIcon, MapPinIcon, ShieldCheckIcon } from '../../components/I
 
 export const metadata: Metadata = {
   title: 'Entrümpelung für Vermieter & Hausverwaltungen | Collectus',
-  description: 'Schnelle und zuverlässige Wohnungsräumung bei Mieterwechsel, Räumungsklagen oder zurückgelassenem Hausrat. Ihr Partner für Hausverwaltungen in Ahlen und Umgebung.',
+  description: 'Schnelle Wohnungsräumung bei Mieterwechsel, Räumungsklage oder zurückgelassenem Hausrat. Ihr Partner für Hausverwaltungen in Ahlen.',
   alternates: { canonical: '/fuer-vermieter' },
 }
 

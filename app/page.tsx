@@ -5,10 +5,11 @@ import {
   SparklesIcon, TruckIcon, RecycleIcon, HomeIcon, ArchiveIcon,
 } from '../components/Icons'
 import { MultiStepForm } from '../components/MultiStepForm'
+import EntruempelungScene from '../components/illustrations/EntruempelungScene'
 
 export const metadata: Metadata = {
-  title: 'Entrümpelung Ahlen – Wohnungsauflösung & Haushaltsauflösung | Collectus',
-  description: 'Professionelle Entrümpelung, Wohnungsauflösung und Haushaltsauflösung in Ahlen und Umgebung. Kostenlose Besichtigung, besenreine Übergabe, faire Festpreise. Jetzt anfragen!',
+  title: 'Entrümpelung Ahlen – Wohnungsauflösung & Haushaltsauflösung',
+  description: 'Professionelle Entrümpelung, Wohnungsauflösung und Haushaltsauflösung in Ahlen. Kostenlose Besichtigung, besenreine Übergabe, faire Festpreise.',
   alternates: { canonical: '/' },
 }
 
@@ -87,8 +88,7 @@ function Hero() {
                 <MapPinIcon className="w-4 h-4" />
                 Ahlen & Umgebung
               </div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-yellow-200 bg-yellow-50 px-4 py-1.5 text-sm font-semibold text-yellow-700 shadow-sm">
-                <span className="text-yellow-400 tracking-tight leading-none">★★★★★</span>
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-white px-4 py-1.5 text-sm font-semibold text-primary shadow-sm">
                 Familienbetrieb aus Ahlen
               </div>
             </div>
@@ -157,15 +157,19 @@ function Hero() {
             </div>
 
             {/* Personal touch – founder signature */}
-            <div className="mt-6 flex items-center gap-3.5 rounded-2xl border border-gray-100 bg-white/70 px-4 py-3.5 shadow-sm backdrop-blur-sm max-w-sm">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base font-black text-primary select-none">
-                A
+            <div className="mt-6 flex items-center gap-4 rounded-2xl border border-primary/10 bg-white/80 px-5 py-4 shadow-md backdrop-blur-sm max-w-md">
+              {/* Bildslot: /public/team/abraham.jpg austauschen, wenn Foto vorhanden */}
+              <div className="relative shrink-0">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-xl font-black text-primary select-none overflow-hidden ring-2 ring-primary/20">
+                  A
+                </div>
+                <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-green-400 ring-2 ring-white" title="Online" />
               </div>
               <div>
-                <p className="text-sm text-gray-600 italic leading-snug">
+                <p className="text-sm font-semibold text-gray-800 mb-0.5">Abraham Osmani · Inhaber</p>
+                <p className="text-sm text-gray-500 italic leading-snug">
                   „Wir nehmen uns Zeit – für Sie und für die Dinge, die Ihnen wichtig sind."
                 </p>
-                <p className="mt-1 text-xs text-gray-400">Abraham Osmani, Inhaber</p>
               </div>
             </div>
           </div>
@@ -215,6 +219,11 @@ function Hero() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Illustration – full-width beneath two-column hero */}
+        <div className="mt-14 flex justify-center">
+          <EntruempelungScene className="w-full max-w-2xl h-auto drop-shadow-sm" />
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@ import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, MapPinIcon, RecycleIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
-  title: 'Elektroschrott Entsorgung Ahlen – Abholung & Recycling | Collectus',
+  title: 'Elektroschrott Entsorgung Ahlen – Abholung & Recycling',
   description: 'Elektroschrott fachgerecht entsorgen in Ahlen. Wir holen alte Elektrogeräte ab und recyceln umweltgerecht. Schnell und unkompliziert.',
   alternates: { canonical: '/elektroschrott-entsorgung' },
 }
