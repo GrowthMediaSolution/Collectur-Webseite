@@ -1,27 +1,29 @@
 import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
-const transporter = nodemailer.createTransport({
-  host: 'w01f7da9.kasserver.com',
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  auth: {
-    user: 'info@collectus-entruempelung.de',
-    pass: process.env.SMTP_PASS,
-  },
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 15000,
-})
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
+const TO = 'info@rundumshausserviceleistungen.de'
+const FROM = 'Collectus Anfrage <info@collectus-entruempelung.de>'
 
 export async function POST(req: Request) {
   try {
-    const data = await req.json()
-    const { service, plz, flaeche, zeitraum, name, phone, email, message } = data
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error('RESEND_API_KEY missing')
+      return NextResponse.json({ ok: false, error: 'config' }, { status: 500 })
+    }
 
-    const text = [
-      `Leistung: ${service}`,
+    const data = await req.json()
+    const { service, plz, flaeche, zeitraum, name, phone, email, message } = data || {}
+
+    if (!name || !phone || !plz) {
+      return NextResponse.json({ ok: false, error: 'missing fields' }, { status: 400 })
+    }
+
+    const lines = [
+      `Leistung: ${service || '-'}`,
       `PLZ/Ort: ${plz}`,
       flaeche ? `Fläche ca.: ${flaeche} m²` : '',
       zeitraum ? `Zeitraum: ${zeitraum}` : '',
@@ -29,21 +31,28 @@ export async function POST(req: Request) {
       `Telefon: ${phone}`,
       email ? `E-Mail Kunde: ${email}` : '',
       message ? `Nachricht: ${message}` : '',
-    ]
-      .filter(Boolean)
-      .join('\n')
+    ].filter(Boolean)
 
-    await transporter.sendMail({
-      from: '"Collectus Anfrage" <info@collectus-entruempelung.de>',
-      to: 'info@rundumshausserviceleistungen.de',
-      replyTo: email || 'info@collectus-entruempelung.de',
+    const html = `<h2>Neue Anfrage über collectus-entruempelung.de</h2><pre style="font-family:Arial,sans-serif;font-size:14px">${lines.join('\n')}</pre>`
+
+    const resend = new Resend(apiKey)
+    const { error } = await resend.emails.send({
+      from: FROM,
+      to: TO,
+      replyTo: email || undefined,
       subject: `Neue Anfrage: ${service || 'Entrümpelung'} – ${plz}`,
-      text,
+      text: lines.join('\n'),
+      html,
     })
+
+    if (error) {
+      console.error('Resend error:', error)
+      return NextResponse.json({ ok: false, error: error.message }, { status: 500 })
+    }
 
     return NextResponse.json({ ok: true })
   } catch (err) {
-    console.error('Mail error:', err)
+    console.error('Mail handler error:', err)
     return NextResponse.json({ ok: false }, { status: 500 })
   }
 }
