@@ -77,10 +77,10 @@ jobs:
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
             "cd /var/www/${{ steps.proj.outputs.name }} && \
              pm2 describe ${{ steps.proj.outputs.name }} > /dev/null 2>&1 \
-               && pm2 restart ${{ steps.proj.outputs.name }} \
-               || SMTP_PASS='${{ secrets.SMTP_PASS }}' pm2 start server.js --name ${{ steps.proj.outputs.name }}"
+               && PORT=3020 pm2 restart ${{ steps.proj.outputs.name }} --update-env \
+               || PORT=3020 pm2 start server.js --name ${{ steps.proj.outputs.name }}"
 
       - name: Diagnose VPS state
         run: |
           ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
-            "echo '=== PM2 LOGS ===' && pm2 logs Collectur-Webseite --lines 30 --nostream 2>&1 && echo '=== NGINX FIND ===' && find /etc/nginx -name '*.conf' 2>/dev/null | head -20 && find /etc/apache2 -name '*.conf' 2>/dev/null | head -5 && echo '=== COLLECTUS ENV ===' && cat /var/www/Collectur-Webseite/.env 2>/dev/null"
+            "find /etc/apache2 -name '*.conf' | xargs grep -l 'collectus' 2>/dev/null; find /etc/apache2/sites-enabled -type f 2>/dev/null | head -20; ss -tlnp | grep node"
