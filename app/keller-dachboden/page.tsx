@@ -61,6 +61,8 @@ export default function KellerDachboden() {
                 width={1080}
                 height={1440}
                 className="w-full h-52 object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
               />
             </div>
             <div className="flex items-center gap-3 mb-6">

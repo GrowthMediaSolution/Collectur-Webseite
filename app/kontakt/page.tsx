@@ -5,7 +5,7 @@ import { MultiStepForm } from '../../components/MultiStepForm'
 
 export const metadata: Metadata = {
   title: 'Kontakt – Collectus Entrümpelung Ahlen',
-  description: 'Rufen Sie uns an, schreiben Sie uns oder kommen Sie vorbei. Wir beraten Sie gerne kostenlos und unverbindlich.',
+  description: 'Kontaktieren Sie Collectus Entrümpelung Ahlen. Kostenlose Beratung, Besichtigung vor Ort und verbindliches Festpreisangebot. Mo–Sa 08–18 Uhr erreichbar.',
   alternates: { canonical: '/kontakt' },
 }
 

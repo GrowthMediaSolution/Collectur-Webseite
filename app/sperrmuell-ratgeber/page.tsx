@@ -26,9 +26,34 @@ const kategorien = [
   },
 ]
 
+function ArticleSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Sperrmüll-Ratgeber: Was darf in den Sperrmüll?',
+    description:
+      'Was gehört zum Sperrmüll, was nicht? Unser Ratgeber klärt auf – mit klaren Listen und hilfreichen Tipps für die korrekte Entsorgung in Ahlen.',
+    author: { '@type': 'Person', name: 'Abraham Osmani' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Collectus Entrümpelung',
+      url: 'https://collectus-entruempelung.de',
+    },
+    datePublished: '2025-04-26',
+    dateModified: '2026-05-09',
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 export default function SperrmüllRatgeber() {
   return (
     <>
+      <ArticleSchema />
       <PageHero
         title="Sperrmüll-Ratgeber:"
         highlight="Was darf in den Sperrmüll?"

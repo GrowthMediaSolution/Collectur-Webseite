@@ -6,7 +6,7 @@ import { CheckCircleIcon, MapPinIcon, ShieldCheckIcon } from '../../components/I
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'Seniorenservice Ahlen – Einfühlsame Entrümpelung',
+  title: 'Seniorenservice Ahlen – Einfühlsame Entrümpelung | Collectus',
   description: 'Einfühlsame Entrümpelung für Senioren in Ahlen. Seniorenwohnungen und Heimzimmer behutsam räumen – mit Verständnis und Respekt. Kostenlose Beratung vor Ort.',
   alternates: { canonical: '/seniorenentruempelung' },
 }
@@ -63,11 +63,13 @@ export default function Seniorenentruempelung() {
             {/* Foto Seniorenservice */}
             <div className="rounded-2xl overflow-hidden mb-6 shadow-lg">
               <Image
-                src="/images/seniorenservice.png"
+                src="/images/seniorenservice.webp"
                 alt="Einfühlsamer Seniorenservice – Collectus Entrümpelung Ahlen"
                 width={1024}
                 height={1024}
                 className="w-full h-64 object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
               />
             </div>
             <div className="flex items-center gap-3 mb-6">

@@ -6,7 +6,7 @@ import { CheckCircleIcon, MapPinIcon, SparklesIcon } from '../../components/Icon
 
 export const metadata: Metadata = {
   title: 'Möbel entsorgen Ahlen – Altmöbel Abholung | Collectus',
-  description: 'Alte Möbel entsorgen in Ahlen. Abholung, Demontage und fachgerechte Entsorgung. Schnell, günstig und umweltgerecht.',
+  description: 'Alte Möbel entsorgen in Ahlen und Umgebung. Abholung, Demontage und fachgerechte Entsorgung – schnell, günstig und umweltgerecht. Kostenlose Besichtigung.',
   alternates: { canonical: '/moebel-entsorgung' },
 }
 

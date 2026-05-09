@@ -6,7 +6,7 @@ import { CheckCircleIcon, MapPinIcon, SparklesIcon } from '../../components/Icon
 
 export const metadata: Metadata = {
   title: 'Gartenräumung Ahlen – Gartenhaus & Schuppen räumen | Collectus',
-  description: 'Gartenräumung in Ahlen und Umgebung. Gartenhaus, Schuppen, Terrasse – professionell geräumt und fachgerecht entsorgt.',
+  description: 'Gartenräumung in Ahlen und Umgebung. Gartenhaus, Schuppen, Terrasse und Aussenanlagen professionell räumen. Kostenlose Besichtigung, Festpreis, besenrein.',
   alternates: { canonical: '/gartenraeumung' },
 }
 

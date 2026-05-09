@@ -8,7 +8,7 @@ import { MultiStepForm } from '../components/MultiStepForm'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'Entrümpelung Ahlen – Wohnungsauflösung & Haushaltsauflösung',
+  title: 'Entrümpelung Ahlen – Wohnungsauflösung & Haushaltsauflösung | Collectus',
   description: 'Professionelle Entrümpelung, Wohnungsauflösung und Haushaltsauflösung in Ahlen. Kostenlose Besichtigung, besenreine Übergabe, faire Festpreise.',
   alternates: { canonical: '/' },
 }
@@ -64,8 +64,16 @@ const usps = [
 ]
 
 const serviceAreas = [
-  'Ahlen', 'Beckum', 'Hamm', 'Warendorf', 'Oelde',
-  'Drensteinfurt', 'Sendenhorst', 'Ennigerloh', 'Dolberg', 'Vorhelm',
+  { name: 'Ahlen', href: '/entruempelung' },
+  { name: 'Beckum', href: '/entruempelung-beckum' },
+  { name: 'Hamm', href: '/entruempelung-hamm' },
+  { name: 'Warendorf', href: '/entruempelung-warendorf' },
+  { name: 'Oelde', href: '/entruempelung-oelde' },
+  { name: 'Drensteinfurt', href: '/entruempelung-drensteinfurt' },
+  { name: 'Sendenhorst', href: '/entruempelung-sendenhorst' },
+  { name: 'Ennigerloh', href: '/entruempelung-ennigerloh' },
+  { name: 'Dolberg' },
+  { name: 'Vorhelm' },
 ]
 
 /* ──────── Sections ──────── */
@@ -161,7 +169,7 @@ function Hero() {
               {/* Bildslot: /public/team/abraham.jpg austauschen, wenn Foto vorhanden */}
               <div className="relative shrink-0">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-xl font-black text-primary select-none overflow-hidden ring-2 ring-primary/20">
-                  <Image src="/images/abraham-portrait.jpg" alt="Abraham Osmani – Inhaber Collectus" width={56} height={56} className="object-cover w-full h-full object-top" />
+                  <Image src="/images/abraham-portrait.webp" alt="Abraham Osmani – Inhaber Collectus" width={56} height={56} className="object-cover w-full h-full object-top" />
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-green-400 ring-2 ring-white" title="Online" />
               </div>
@@ -229,6 +237,7 @@ function Hero() {
             width={2000}
             height={1333}
             className="w-full h-auto object-cover max-h-[480px]"
+            sizes="100vw"
             priority
           />
         </div>
@@ -401,12 +410,19 @@ function ServiceArea() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-          {serviceAreas.map((area) => (
-            <span key={area} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white border border-white/10 rounded-full px-5 py-2.5 text-sm font-medium hover:bg-primary hover:border-primary transition-all cursor-default">
-              <MapPinIcon className="w-3.5 h-3.5 opacity-60" />
-              {area}
-            </span>
-          ))}
+          {serviceAreas.map((area) =>
+            area.href ? (
+              <Link key={area.name} href={area.href} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white border border-white/10 rounded-full px-5 py-2.5 text-sm font-medium hover:bg-primary hover:border-primary transition-all">
+                <MapPinIcon className="w-3.5 h-3.5 opacity-60" />
+                {area.name}
+              </Link>
+            ) : (
+              <span key={area.name} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white border border-white/10 rounded-full px-5 py-2.5 text-sm font-medium cursor-default">
+                <MapPinIcon className="w-3.5 h-3.5 opacity-60" />
+                {area.name}
+              </span>
+            )
+          )}
         </div>
 
         <p className="text-center text-gray-500 text-sm mt-8">
@@ -486,6 +502,7 @@ function Contact() {
                 width={920}
                 height={1280}
                 className="w-full h-auto object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="px-4 py-3 bg-gray-50 border-t border-gray-100">
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Wir sind vor Ort in der Region aktiv</p>
@@ -558,6 +575,13 @@ function SchemaOrg() {
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       opens: '08:00',
       closes: '18:00',
+    },
+    image: 'https://collectus-entruempelung.de/images/abraham-garten.jpg',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5.0',
+      bestRating: '5',
+      reviewCount: '12',
     },
   }
 

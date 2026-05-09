@@ -69,6 +69,8 @@ export default function Wohnungsaufloesung() {
                   src="/images/wohnzimmer-geraeumt-1.jpg"
                   alt="Wohnzimmer nach der Räumung – besenrein"
                   width={540}
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  priority
                   height={540}
                   className="w-full h-32 object-cover object-center"
                 />
@@ -135,9 +137,19 @@ export default function Wohnungsaufloesung() {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Wohnungsauflösung Ahlen', 'Wohnungsräumung Beckum', 'Wohnung räumen lassen Hamm', 'Wohnungsauflösung Kosten', 'besenreine Wohnungsauflösung'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
+            {[
+              { label: 'Wohnungsauflösung Ahlen' },
+              { label: 'Wohnungsräumung Beckum', href: '/entruempelung-beckum' },
+              { label: 'Wohnung räumen lassen Hamm', href: '/entruempelung-hamm' },
+              { label: 'Wohnungsauflösung Kosten', href: '/entruempelung-kosten' },
+              { label: 'besenreine Wohnungsauflösung' },
+            ].map(tag => tag.href ? (
+              <Link key={tag.label} href={tag.href} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+                <MapPinIcon className="w-3 h-3" />{tag.label}
+              </Link>
+            ) : (
+              <span key={tag.label} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+                <MapPinIcon className="w-3 h-3" />{tag.label}
               </span>
             ))}
           </div>

@@ -20,9 +20,34 @@ const vorteile = [
   'Kurzfristige Termine bei dringenden Fällen',
 ]
 
+function ArticleSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Entrümpelung für Vermieter & Hausverwaltungen',
+    description:
+      'Schnelle Wohnungsräumung bei Mieterwechsel, Räumungsklage oder zurückgelassenem Hausrat. Ihr Partner für Hausverwaltungen in Ahlen.',
+    author: { '@type': 'Person', name: 'Abraham Osmani' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Collectus Entrümpelung',
+      url: 'https://collectus-entruempelung.de',
+    },
+    datePublished: '2025-04-26',
+    dateModified: '2026-05-09',
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 export default function FuerVermieter() {
   return (
     <>
+      <ArticleSchema />
       <PageHero
         title="Entrümpelung für"
         highlight="Vermieter & Hausverwaltungen"

@@ -6,13 +6,13 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Warendorf – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Warendorf. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Warendorf – Kreisstadt im Münsterland. Festpreis, besenreine Übergabe, kostenlose Besichtigung. Ihr Partner für Privat & Gewerbe.',
   alternates: { canonical: '/entruempelung-warendorf' },
 }
 
 const scope = [
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
+  'Kreisstadt Warendorf inkl. Freckenhorst und Einen',
   'Gewerberäume, Büros, Lagerhallen',
   'Schnelle Terminvergabe – auch kurzfristig',
   'Fachgerechte Trennung und Entsorgung',
@@ -66,7 +66,7 @@ export default function EntruempelungWarendorf() {
                 { label: 'Wohnungen', val: 'Ab 1 Zimmer' },
                 { label: 'Häuser', val: 'Komplett' },
                 { label: 'Gewerbe', val: 'Büro & Lager' },
-                { label: 'Garagen', val: 'Inkl. Entsorgung' },
+                { label: 'Nachlass', val: 'Sensibel & diskret' },
                 { label: 'Besichtigung', val: 'Kostenlos' },
                 { label: 'Übergabe', val: 'Besenrein' },
               ].map(item => (
@@ -96,11 +96,21 @@ export default function EntruempelungWarendorf() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Warendorf', 'Entrümpelungsfirma Warendorf', 'Haushaltsauflösung Warendorf', 'Wohnungsauflösung Warendorf', 'Entrümpelung Kreis Warendorf'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Warendorf
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Warendorf
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Warendorf
+            </Link>
+            <Link href="/wohnungsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Wohnungsauflösung Warendorf
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Kreis Warendorf
+            </span>
           </div>
         </div>
       </section>
@@ -108,8 +118,8 @@ export default function EntruempelungWarendorf() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-telgte', label: 'Entrümpelung Telgte' },
+              { href: '/entruempelung-ennigerloh', label: 'Entrümpelung Ennigerloh' },
             ]} />
 
       <CtaBanner />

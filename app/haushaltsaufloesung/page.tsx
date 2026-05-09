@@ -6,7 +6,7 @@ import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, SparklesIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
-  title: 'Haushaltsauflösung Ahlen – Einfühlsam & Professionell',
+  title: 'Haushaltsauflösung Ahlen – Einfühlsam & Professionell | Collectus',
   description: 'Komplette Haushaltsauflösung in Ahlen. Einfühlsam und besenrein – nach Todesfall, Pflegeheim oder Umzug. Kostenlose Besichtigung, Festpreis.',
   alternates: { canonical: '/haushaltsaufloesung' },
 }
@@ -60,6 +60,8 @@ export default function Haushaltsaufloesung() {
                 src="/images/wohnzimmer-geraeumt-1.jpg"
                 alt="Geräumtes Wohnzimmer nach Haushaltsauflösung durch Collectus Ahlen"
                 width={1080}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
                 height={1080}
                 className="w-full h-48 object-cover object-center"
               />
@@ -119,9 +121,19 @@ export default function Haushaltsaufloesung() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Haushaltsauflösung Ahlen', 'Haushaltsauflösung Kosten', 'Haushaltsauflösung nach Todesfall', 'Haushaltsauflösung Beckum', 'Haushalt auflösen lassen'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
+            {[
+              { label: 'Haushaltsauflösung Ahlen' },
+              { label: 'Haushaltsauflösung Kosten', href: '/entruempelung-kosten' },
+              { label: 'Haushaltsauflösung nach Todesfall', href: '/nachlassentruempelung' },
+              { label: 'Haushaltsauflösung Beckum', href: '/entruempelung-beckum' },
+              { label: 'Haushalt auflösen lassen' },
+            ].map(tag => tag.href ? (
+              <Link key={tag.label} href={tag.href} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+                <MapPinIcon className="w-3 h-3" />{tag.label}
+              </Link>
+            ) : (
+              <span key={tag.label} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+                <MapPinIcon className="w-3 h-3" />{tag.label}
               </span>
             ))}
           </div>

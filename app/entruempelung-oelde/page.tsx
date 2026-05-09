@@ -6,13 +6,13 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Oelde – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Oelde. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Oelde – Nachbarstadt von Ahlen im Kreis Warendorf. Schnelle Anfahrt, Festpreis, besenreine Übergabe. Jetzt Termin vereinbaren.',
   alternates: { canonical: '/entruempelung-oelde' },
 }
 
 const scope = [
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
+  'Oelde, Stromberg und Lette abgedeckt',
   'Gewerberäume, Büros, Lagerhallen',
   'Schnelle Terminvergabe – auch kurzfristig',
   'Fachgerechte Trennung und Entsorgung',
@@ -66,7 +66,7 @@ export default function EntruempelungOelde() {
                 { label: 'Wohnungen', val: 'Ab 1 Zimmer' },
                 { label: 'Häuser', val: 'Komplett' },
                 { label: 'Gewerbe', val: 'Büro & Lager' },
-                { label: 'Garagen', val: 'Inkl. Entsorgung' },
+                { label: 'Keller & Dachboden', val: 'Inkl. Entsorgung' },
                 { label: 'Besichtigung', val: 'Kostenlos' },
                 { label: 'Übergabe', val: 'Besenrein' },
               ].map(item => (
@@ -96,11 +96,18 @@ export default function EntruempelungOelde() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Oelde', 'Entrümpelungsfirma Oelde', 'Haushaltsauflösung Oelde', 'Entrümpelung Kreis Warendorf'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Oelde
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Oelde
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Oelde
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Kreis Warendorf
+            </span>
           </div>
         </div>
       </section>
@@ -108,8 +115,8 @@ export default function EntruempelungOelde() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-beckum', label: 'Entrümpelung Beckum' },
+              { href: '/entruempelung-ennigerloh', label: 'Entrümpelung Ennigerloh' },
             ]} />
 
       <CtaBanner />

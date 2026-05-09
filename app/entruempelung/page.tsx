@@ -103,9 +103,19 @@ export default function Entruempelung() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Ahlen', 'Entrümpelungsfirma Ahlen', 'kurzfristige Entrümpelung', 'Entrümpelung Hamm', 'Gewerbeentrümpelung'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
+            {[
+              { label: 'Entrümpelung Ahlen' },
+              { label: 'Entrümpelungsfirma Ahlen' },
+              { label: 'kurzfristige Entrümpelung' },
+              { label: 'Entrümpelung Hamm', href: '/entruempelung-hamm' },
+              { label: 'Gewerbeentrümpelung', href: '/gewerbeentruempelung' },
+            ].map(tag => tag.href ? (
+              <Link key={tag.label} href={tag.href} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+                <MapPinIcon className="w-3 h-3" />{tag.label}
+              </Link>
+            ) : (
+              <span key={tag.label} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+                <MapPinIcon className="w-3 h-3" />{tag.label}
               </span>
             ))}
           </div>

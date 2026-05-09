@@ -6,14 +6,14 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Ennigerloh – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Ennigerloh. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Ennigerloh – direkt aus Ahlen, kurze Wege im Kreis Warendorf. Festpreis, besenrein, kostenlose Besichtigung. Jetzt Termin sichern.',
   alternates: { canonical: '/entruempelung-ennigerloh' },
 }
 
 const scope = [
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
-  'Gewerberäume, Büros, Lagerhallen',
+  'Ennigerloh, Enniger und Westkirchen',
+  'Wohnungen, Häuser, Keller, Dachböden',
   'Schnelle Terminvergabe – auch kurzfristig',
   'Fachgerechte Trennung und Entsorgung',
   'Besenreine Übergabe im Anschluss',
@@ -68,7 +68,7 @@ export default function EntruempelungEnnigerloh() {
                 { label: 'Gewerbe', val: 'Büro & Lager' },
                 { label: 'Garagen', val: 'Inkl. Entsorgung' },
                 { label: 'Besichtigung', val: 'Kostenlos' },
-                { label: 'Übergabe', val: 'Besenrein' },
+                { label: 'Nachlass', val: 'Sensibel & diskret' },
               ].map(item => (
                 <div key={item.label} className="bg-white rounded-xl p-4 border border-gray-100 text-center">
                   <p className="text-sm text-gray-500">{item.label}</p>
@@ -95,11 +95,18 @@ export default function EntruempelungEnnigerloh() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Ennigerloh', 'Entrümpelungsfirma Ennigerloh', 'Haushaltsauflösung Ennigerloh', 'Entrümpelung Kreis Warendorf'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Ennigerloh
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Ennigerloh
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Ennigerloh
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Kreis Warendorf
+            </span>
           </div>
         </div>
       </section>
@@ -107,8 +114,8 @@ export default function EntruempelungEnnigerloh() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-oelde', label: 'Entrümpelung Oelde' },
+              { href: '/entruempelung-warendorf', label: 'Entrümpelung Warendorf' },
             ]} />
 
       <CtaBanner />

@@ -6,13 +6,13 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Lüdinghausen – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Lüdinghausen. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Lüdinghausen – Kreis Coesfeld, Burg Vischering-Region. Festpreis, besenreine Übergabe, kostenlose Besichtigung vor Ort.',
   alternates: { canonical: '/entruempelung-luedinghausen' },
 }
 
 const scope = [
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
+  'Lüdinghausen, Seppenrade und Ottmarsbocholt',
   'Gewerberäume, Büros, Lagerhallen',
   'Schnelle Terminvergabe – auch kurzfristig',
   'Fachgerechte Trennung und Entsorgung',
@@ -68,7 +68,7 @@ export default function EntruempelungLuedinghausen() {
                 { label: 'Gewerbe', val: 'Büro & Lager' },
                 { label: 'Garagen', val: 'Inkl. Entsorgung' },
                 { label: 'Besichtigung', val: 'Kostenlos' },
-                { label: 'Übergabe', val: 'Besenrein' },
+                { label: 'Einsatzgebiet', val: 'Kreis Coesfeld' },
               ].map(item => (
                 <div key={item.label} className="bg-white rounded-xl p-4 border border-gray-100 text-center">
                   <p className="text-sm text-gray-500">{item.label}</p>
@@ -97,11 +97,18 @@ export default function EntruempelungLuedinghausen() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Lüdinghausen', 'Entrümpelungsfirma Lüdinghausen', 'Haushaltsauflösung Lüdinghausen', 'Entrümpelung Kreis Coesfeld'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Lüdinghausen
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Lüdinghausen
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Lüdinghausen
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Kreis Coesfeld
+            </span>
           </div>
         </div>
       </section>
@@ -109,8 +116,8 @@ export default function EntruempelungLuedinghausen() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-werne', label: 'Entrümpelung Werne' },
+              { href: '/entruempelung-muenster', label: 'Entrümpelung Münster' },
             ]} />
 
       <CtaBanner />

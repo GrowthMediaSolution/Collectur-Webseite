@@ -6,13 +6,13 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Werne – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Werne. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Werne – an der Lippe im Kreis Unna. Festpreis, besenreine Übergabe, kostenlose Besichtigung. Schnell vor Ort ab Ahlen.',
   alternates: { canonical: '/entruempelung-werne' },
 }
 
 const scope = [
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
+  'Werne, Stockum und Horst abgedeckt',
   'Gewerberäume, Büros, Lagerhallen',
   'Schnelle Terminvergabe – auch kurzfristig',
   'Fachgerechte Trennung und Entsorgung',
@@ -68,7 +68,7 @@ export default function EntruempelungWerne() {
                 { label: 'Gewerbe', val: 'Büro & Lager' },
                 { label: 'Garagen', val: 'Inkl. Entsorgung' },
                 { label: 'Besichtigung', val: 'Kostenlos' },
-                { label: 'Übergabe', val: 'Besenrein' },
+                { label: 'Einsatzgebiet', val: 'Kreis Unna' },
               ].map(item => (
                 <div key={item.label} className="bg-white rounded-xl p-4 border border-gray-100 text-center">
                   <p className="text-sm text-gray-500">{item.label}</p>
@@ -96,11 +96,18 @@ export default function EntruempelungWerne() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Werne', 'Entrümpelungsfirma Werne', 'Haushaltsauflösung Werne', 'Entrümpelung Kreis Unna'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Werne
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Werne
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Werne
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Kreis Unna
+            </span>
           </div>
         </div>
       </section>
@@ -108,8 +115,8 @@ export default function EntruempelungWerne() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-hamm', label: 'Entrümpelung Hamm' },
+              { href: '/entruempelung-luedinghausen', label: 'Entrümpelung Lüdinghausen' },
             ]} />
 
       <CtaBanner />

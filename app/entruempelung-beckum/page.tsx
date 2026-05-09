@@ -6,14 +6,14 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Beckum – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Beckum. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Beckum – nur wenige Kilometer von Ahlen. Privat & Gewerbe, Festpreis, besenreine Übergabe. Ihr lokaler Partner im Kreis Warendorf.',
   alternates: { canonical: '/entruempelung-beckum' },
 }
 
 const scope = [
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
-  'Gewerberäume, Büros, Lagerhallen',
+  'Nur 15 Minuten Anfahrt ab Ahlen',
+  'Auch in Neubeckum und Roland verfügbar',
   'Schnelle Terminvergabe – auch kurzfristig',
   'Fachgerechte Trennung und Entsorgung',
   'Besenreine Übergabe im Anschluss',
@@ -66,7 +66,7 @@ export default function EntruempelungBeckum() {
               {[
                 { label: 'Wohnungen', val: 'Ab 1 Zimmer' },
                 { label: 'Häuser', val: 'Komplett' },
-                { label: 'Gewerbe', val: 'Büro & Lager' },
+                { label: 'Anfahrt', val: '15 Min.' },
                 { label: 'Garagen', val: 'Inkl. Entsorgung' },
                 { label: 'Besichtigung', val: 'Kostenlos' },
                 { label: 'Übergabe', val: 'Besenrein' },
@@ -99,11 +99,21 @@ export default function EntruempelungBeckum() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Beckum', 'Entrümpelungsfirma Beckum', 'Haushaltsauflösung Beckum', 'Wohnungsauflösung Beckum', 'Entrümpelung Kreis Warendorf'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Beckum
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Beckum
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Beckum
+            </Link>
+            <Link href="/wohnungsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Wohnungsauflösung Beckum
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Kreis Warendorf
+            </span>
           </div>
         </div>
       </section>
@@ -111,8 +121,8 @@ export default function EntruempelungBeckum() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-oelde', label: 'Entrümpelung Oelde' },
+              { href: '/entruempelung', label: 'Entrümpelung Ahlen' },
             ]} />
 
       <CtaBanner />

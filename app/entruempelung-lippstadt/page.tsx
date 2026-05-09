@@ -6,13 +6,13 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Lippstadt – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Lippstadt. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Lippstadt – im Kreis Soest, regelmäßig im Einsatz. Festpreis, besenreine Übergabe, kostenlose Besichtigung vor Ort.',
   alternates: { canonical: '/entruempelung-lippstadt' },
 }
 
 const scope = [
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
+  'Lippstadt-Mitte, Lipperode und Bad Waldliesborn',
   'Gewerberäume, Büros, Lagerhallen',
   'Schnelle Terminvergabe – auch kurzfristig',
   'Fachgerechte Trennung und Entsorgung',
@@ -68,7 +68,7 @@ export default function EntruempelungLippstadt() {
                 { label: 'Gewerbe', val: 'Büro & Lager' },
                 { label: 'Garagen', val: 'Inkl. Entsorgung' },
                 { label: 'Besichtigung', val: 'Kostenlos' },
-                { label: 'Übergabe', val: 'Besenrein' },
+                { label: 'Einsatzgebiet', val: 'Kreis Soest' },
               ].map(item => (
                 <div key={item.label} className="bg-white rounded-xl p-4 border border-gray-100 text-center">
                   <p className="text-sm text-gray-500">{item.label}</p>
@@ -96,11 +96,18 @@ export default function EntruempelungLippstadt() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Lippstadt', 'Entrümpelungsfirma Lippstadt', 'Haushaltsauflösung Lippstadt', 'Entrümpelung Kreis Soest'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Lippstadt
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Lippstadt
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Lippstadt
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Kreis Soest
+            </span>
           </div>
         </div>
       </section>
@@ -108,8 +115,8 @@ export default function EntruempelungLippstadt() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-guetersloh', label: 'Entrümpelung Gütersloh' },
+              { href: '/entruempelung-beckum', label: 'Entrümpelung Beckum' },
             ]} />
 
       <CtaBanner />

@@ -5,7 +5,7 @@ import { LocalBusinessSchema } from '../../components/Schema'
 import { CheckCircleIcon, MapPinIcon, PhoneIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
-  title: 'Entrümpelung Kosten – Festpreis & kostenlose Besichtigung',
+  title: 'Entrümpelung Kosten – Festpreis & kostenlose Besichtigung | Collectus',
   description: 'Was kostet eine Entrümpelung? Kostenlose Besichtigung vor Ort in Ahlen – verbindlicher Festpreis ohne versteckte Kosten.',
   alternates: { canonical: '/entruempelung-kosten' },
 }
@@ -111,9 +111,20 @@ export default function EntruempelungKosten() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Kosten', 'Was kostet Entrümpelung', 'Wohnungsauflösung Kosten', 'Entrümpelung Festpreis', 'günstige Entrümpelung Ahlen', 'kostenlose Besichtigung'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
+            {[
+              { label: 'Entrümpelung Kosten' },
+              { label: 'Was kostet Entrümpelung' },
+              { label: 'Wohnungsauflösung Kosten', href: '/wohnungsaufloesung' },
+              { label: 'Entrümpelung Festpreis' },
+              { label: 'günstige Entrümpelung Ahlen', href: '/entruempelung' },
+              { label: 'kostenlose Besichtigung', href: '/kontakt' },
+            ].map(tag => tag.href ? (
+              <Link key={tag.label} href={tag.href} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+                <MapPinIcon className="w-3 h-3" />{tag.label}
+              </Link>
+            ) : (
+              <span key={tag.label} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+                <MapPinIcon className="w-3 h-3" />{tag.label}
               </span>
             ))}
           </div>

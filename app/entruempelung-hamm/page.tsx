@@ -6,13 +6,13 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Hamm – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Hamm. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Hamm – von Bockum-Hövel bis Pelkum. Kurze Anfahrt ab Ahlen, Festpreis, besenrein. Kostenlose Besichtigung in allen Stadtteilen.',
   alternates: { canonical: '/entruempelung-hamm' },
 }
 
 const scope = [
+  'Alle Stadtteile: Mitte, Bockum-Hövel, Heessen, Pelkum',
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
   'Gewerberäume, Büros, Lagerhallen',
   'Schnelle Terminvergabe – auch kurzfristig',
   'Fachgerechte Trennung und Entsorgung',
@@ -67,7 +67,7 @@ export default function EntruempelungHamm() {
                 { label: 'Häuser', val: 'Komplett' },
                 { label: 'Gewerbe', val: 'Büro & Lager' },
                 { label: 'Garagen', val: 'Inkl. Entsorgung' },
-                { label: 'Besichtigung', val: 'Kostenlos' },
+                { label: 'Besichtigung', val: 'Am selben Tag möglich' },
                 { label: 'Übergabe', val: 'Besenrein' },
               ].map(item => (
                 <div key={item.label} className="bg-white rounded-xl p-4 border border-gray-100 text-center">
@@ -97,11 +97,21 @@ export default function EntruempelungHamm() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Hamm', 'Entrümpelungsfirma Hamm', 'Haushaltsauflösung Hamm', 'Wohnungsauflösung Hamm', 'Nachlassentrümpelung Hamm'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Hamm
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Hamm
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Hamm
+            </Link>
+            <Link href="/wohnungsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Wohnungsauflösung Hamm
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Nachlassentrümpelung Hamm
+            </span>
           </div>
         </div>
       </section>
@@ -109,8 +119,8 @@ export default function EntruempelungHamm() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-werne', label: 'Entrümpelung Werne' },
+              { href: '/entruempelung-beckum', label: 'Entrümpelung Beckum' },
             ]} />
 
       <CtaBanner />

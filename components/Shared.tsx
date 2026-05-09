@@ -83,7 +83,7 @@ export function PageHero({ title, highlight, description, breadcrumb }: {
       <div className="absolute inset-0 -z-10 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #3B82F6 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
       <div className="max-w-6xl mx-auto px-5">
         <nav className="text-sm text-gray-400 mb-6" aria-label="Breadcrumb">
-          <a href="/" title="Zur Startseite – Collectus Entrümpelung" className="hover:text-primary transition-colors">Startseite</a>
+          <Link href="/" title="Zur Startseite – Collectus Entrümpelung" className="hover:text-primary transition-colors">Startseite</Link>
           <span className="mx-2">/</span>
           <span className="text-gray-600">{breadcrumb}</span>
         </nav>

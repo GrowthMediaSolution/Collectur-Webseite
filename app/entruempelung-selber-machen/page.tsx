@@ -42,9 +42,34 @@ const eigenVsProfi = [
   },
 ]
 
+function ArticleSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Entrümpelung selber machen oder Firma?',
+    description:
+      'Die große Frage: Selber entrümpeln oder einen Profi engagieren? Wir vergleichen Kosten, Aufwand und Ergebnis – ehrlich und transparent.',
+    author: { '@type': 'Person', name: 'Abraham Osmani' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Collectus Entrümpelung',
+      url: 'https://collectus-entruempelung.de',
+    },
+    datePublished: '2025-04-26',
+    dateModified: '2026-05-09',
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 export default function EntruempelungSelberMachen() {
   return (
     <>
+      <ArticleSchema />
       <PageHero
         title="Entrümpelung selber machen"
         highlight="oder Firma beauftragen?"

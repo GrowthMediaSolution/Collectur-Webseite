@@ -6,15 +6,15 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Sendenhorst – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Sendenhorst. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Sendenhorst – kleine Stadt, persönlicher Service. Nur 10 Minuten ab Ahlen, Festpreis, besenrein. Auch in Albersloh.',
   alternates: { canonical: '/entruempelung-sendenhorst' },
 }
 
 const scope = [
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
+  'Sendenhorst und Albersloh komplett abgedeckt',
   'Gewerberäume, Büros, Lagerhallen',
-  'Schnelle Terminvergabe – auch kurzfristig',
+  'Nur 10 Minuten Anfahrt von Ahlen',
   'Fachgerechte Trennung und Entsorgung',
   'Besenreine Übergabe im Anschluss',
 ]
@@ -66,7 +66,7 @@ export default function EntruempelungSendenhorst() {
                 { label: 'Wohnungen', val: 'Ab 1 Zimmer' },
                 { label: 'Häuser', val: 'Komplett' },
                 { label: 'Gewerbe', val: 'Büro & Lager' },
-                { label: 'Garagen', val: 'Inkl. Entsorgung' },
+                { label: 'Anfahrt', val: '10 Min.' },
                 { label: 'Besichtigung', val: 'Kostenlos' },
                 { label: 'Übergabe', val: 'Besenrein' },
               ].map(item => (
@@ -95,11 +95,18 @@ export default function EntruempelungSendenhorst() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Sendenhorst', 'Entrümpelungsfirma Sendenhorst', 'Haushaltsauflösung Sendenhorst', 'Entrümpelung Kreis Warendorf'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Sendenhorst
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Sendenhorst
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Sendenhorst
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Kreis Warendorf
+            </span>
           </div>
         </div>
       </section>
@@ -107,8 +114,8 @@ export default function EntruempelungSendenhorst() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-drensteinfurt', label: 'Entrümpelung Drensteinfurt' },
+              { href: '/entruempelung-warendorf', label: 'Entrümpelung Warendorf' },
             ]} />
 
       <CtaBanner />

@@ -4,9 +4,11 @@ export function LocalBusinessSchema({ serviceName, areaServed }: { serviceName?:
     '@type': 'LocalBusiness',
     name: 'Collectus Entrümpelung',
     alternateName: 'Rund ums Haus Serviceleistungen',
+    description: 'Professionelle Entrümpelung, Wohnungsauflösung und Haushaltsauflösung in Ahlen und Umgebung.',
     telephone: '+49-2382-9661456',
     email: 'info@rundumshausserviceleistungen.de',
     url: 'https://collectus-entruempelung.de',
+    image: 'https://collectus-entruempelung.de/images/abraham-garten.jpg',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Lessingstraße 62',
@@ -16,6 +18,7 @@ export function LocalBusinessSchema({ serviceName, areaServed }: { serviceName?:
     },
     geo: { '@type': 'GeoCoordinates', latitude: '51.7633', longitude: '7.8903' },
     priceRange: '$$',
+    founder: { '@type': 'Person', name: 'Abraham Osmani' },
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],

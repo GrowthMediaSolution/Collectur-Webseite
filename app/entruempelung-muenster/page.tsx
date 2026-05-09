@@ -6,14 +6,14 @@ import { CheckCircleIcon, TruckIcon, MapPinIcon } from '../../components/Icons'
 
 export const metadata: Metadata = {
   title: 'Entrümpelung Münster – Schnell & Zuverlässig | Collectus',
-  description: 'Professionelle Entrümpelung in Münster. Privat & Gewerbe, kostenlose Besichtigung, besenreine Übergabe. Festpreis ohne versteckte Kosten.',
+  description: 'Entrümpelung Münster – Mitte, Mauritz, Hiltrup und alle Stadtteile. Festpreis, besenreine Übergabe, kostenlose Besichtigung.',
   alternates: { canonical: '/entruempelung-muenster' },
 }
 
 const scope = [
   'Entrümpelung einzelner Räume oder ganzer Gebäude',
-  'Wohnungen, Häuser, Garagen, Keller',
-  'Gewerberäume, Büros, Lagerhallen',
+  'Auch in Mauritz, Hiltrup, Gievenbeck und Kinderhaus',
+  'Studentenwohnungen, WG-Auflösungen',
   'Schnelle Terminvergabe – auch kurzfristig',
   'Fachgerechte Trennung und Entsorgung',
   'Besenreine Übergabe im Anschluss',
@@ -65,8 +65,8 @@ export default function EntruempelungMuenster() {
               {[
                 { label: 'Wohnungen', val: 'Ab 1 Zimmer' },
                 { label: 'Häuser', val: 'Komplett' },
+                { label: 'Studentenwohnungen', val: 'Komplett' },
                 { label: 'Gewerbe', val: 'Büro & Lager' },
-                { label: 'Garagen', val: 'Inkl. Entsorgung' },
                 { label: 'Besichtigung', val: 'Kostenlos' },
                 { label: 'Übergabe', val: 'Besenrein' },
               ].map(item => (
@@ -97,11 +97,21 @@ export default function EntruempelungMuenster() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
-            {['Entrümpelung Münster', 'Entrümpelungsfirma Münster', 'Haushaltsauflösung Münster', 'Wohnungsauflösung Münster', 'Nachlassentrümpelung Münster'].map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-                <MapPinIcon className="w-3 h-3" />{tag}
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelung Münster
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Entrümpelungsfirma Münster
+            </span>
+            <Link href="/haushaltsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Haushaltsauflösung Münster
+            </Link>
+            <Link href="/wohnungsaufloesung" className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 hover:border-primary/30 hover:text-primary transition-colors">
+              <MapPinIcon className="w-3 h-3" />Wohnungsauflösung Münster
+            </Link>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+              <MapPinIcon className="w-3 h-3" />Nachlassentrümpelung Münster
+            </span>
           </div>
         </div>
       </section>
@@ -109,8 +119,8 @@ export default function EntruempelungMuenster() {
       <RelatedLinks links={[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },
               { href: '/haushaltsaufloesung', label: 'Haushaltsauflösung' },
-              { href: '/keller-dachboden', label: 'Keller & Dachboden' },
-              { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },
+              { href: '/entruempelung-telgte', label: 'Entrümpelung Telgte' },
+              { href: '/entruempelung-luedinghausen', label: 'Entrümpelung Lüdinghausen' },
             ]} />
 
       <CtaBanner />

@@ -27,6 +27,18 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
+  openGraph: {
+    title: 'Collectus Entrümpelung Ahlen – Wohnungsauflösung & Haushaltsauflösung',
+    description: 'Professionelle Entrümpelung, Wohnungsauflösung und Haushaltsauflösung in Ahlen und Umgebung. Kostenlose Besichtigung, Festpreis, besenreine Übergabe.',
+    url: 'https://collectus-entruempelung.de',
+    siteName: 'Collectus Entrümpelung',
+    images: [{ url: '/images/abraham-garten.jpg', width: 2000, height: 1333 }],
+    locale: 'de_DE',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
