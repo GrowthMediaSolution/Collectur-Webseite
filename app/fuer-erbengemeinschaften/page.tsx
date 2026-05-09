@@ -80,7 +80,7 @@ export default function FuerErbengemeinschaften() {
                     {s.step}
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900">{s.title}</h4>
+                    <h3 className="font-bold text-gray-900">{s.title}</h3>
                     <p className="text-gray-500 text-sm">{s.desc}</p>
                   </div>
                 </div>
@@ -123,7 +123,7 @@ export default function FuerErbengemeinschaften() {
 
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-5">
-          <h3 className="font-heading text-2xl font-black text-gray-900 mb-8 text-center">Verwandte Leistungen</h3>
+          <h2 className="font-heading text-2xl font-black text-gray-900 mb-8 text-center">Verwandte Leistungen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { href: '/nachlassentruempelung', label: 'Nachlassentrümpelung' },

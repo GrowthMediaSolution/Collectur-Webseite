@@ -80,7 +80,7 @@ export default function Nachlassentruempelung() {
                     {s.step}
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900">{s.title}</h4>
+                    <h3 className="font-bold text-gray-900">{s.title}</h3>
                     <p className="text-gray-500 text-sm">{s.desc}</p>
                   </div>
                 </div>

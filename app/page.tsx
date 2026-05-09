@@ -188,7 +188,7 @@ function Hero() {
               <div className="flex items-center justify-between border-b border-gray-100 pb-5">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">Schneller Ablauf</p>
-                  <h3 className="mt-2 font-heading text-2xl font-black text-gray-900">In 4 Schritten erledigt</h3>
+                  <h2 className="mt-2 font-heading text-2xl font-black text-gray-900">In 4 Schritten erledigt</h2>
                 </div>
                 <div className="rounded-2xl bg-primary-50 px-4 py-2 text-right">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">Einsatzgebiet</p>
@@ -208,7 +208,7 @@ function Hero() {
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">{item.title}</h4>
+                      <h3 className="font-semibold text-gray-900">{item.title}</h3>
                       <p className="mt-1 text-sm leading-relaxed text-gray-500">{item.text}</p>
                     </div>
                   </div>
@@ -316,7 +316,7 @@ function Advantages() {
                       {s.step}
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">{s.title}</h4>
+                      <h3 className="font-bold text-gray-900">{s.title}</h3>
                       <p className="text-gray-500 text-sm">{s.desc}</p>
                     </div>
                   </div>

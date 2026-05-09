@@ -98,7 +98,7 @@ export default function Wohnungsaufloesung() {
             <div className="space-y-4">
               {situations.map((s, i) => (
                 <div key={i} className="bg-white rounded-xl p-4 border border-gray-100">
-                  <h4 className="font-semibold text-gray-900 mb-1">{s.title}</h4>
+                  <h3 className="font-semibold text-gray-900 mb-1">{s.title}</h3>
                   <p className="text-sm text-gray-500">{s.text}</p>
                 </div>
               ))}

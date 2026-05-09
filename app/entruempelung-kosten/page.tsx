@@ -133,7 +133,7 @@ export default function EntruempelungKosten() {
 
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-5">
-          <h3 className="font-heading text-2xl font-black text-gray-900 mb-8 text-center">Unsere Leistungen</h3>
+          <h2 className="font-heading text-2xl font-black text-gray-900 mb-8 text-center">Unsere Leistungen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { href: '/wohnungsaufloesung', label: 'Wohnungsauflösung' },

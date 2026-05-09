@@ -139,7 +139,7 @@ export default function SperrmüllRatgeber() {
 
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-5">
-          <h3 className="font-heading text-2xl font-black text-gray-900 mb-8 text-center">Weitere Ratgeber & Leistungen</h3>
+          <h2 className="font-heading text-2xl font-black text-gray-900 mb-8 text-center">Weitere Ratgeber & Leistungen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { href: '/sperrmuell-entsorgung', label: 'Sperrmüll & Entsorgung' },

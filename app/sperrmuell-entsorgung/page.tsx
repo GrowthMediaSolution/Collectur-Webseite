@@ -65,7 +65,7 @@ export default function SperrmüllEntsorgung() {
 
             <div className="space-y-4">
               <div className="bg-white rounded-xl p-5 border border-gray-100">
-                <h4 className="font-semibold text-gray-900 mb-2">So funktioniert&apos;s</h4>
+                <h3 className="font-semibold text-gray-900 mb-2">So funktioniert&apos;s</h3>
                 <ol className="space-y-2 text-sm text-gray-600">
                   <li className="flex gap-2"><span className="font-bold text-primary">1.</span> Sie kontaktieren uns mit einer Beschreibung.</li>
                   <li className="flex gap-2"><span className="font-bold text-primary">2.</span> Wir besichtigen kostenlos und erstellen ein Angebot.</li>

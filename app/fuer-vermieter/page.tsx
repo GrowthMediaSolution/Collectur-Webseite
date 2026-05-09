@@ -100,7 +100,7 @@ export default function FuerVermieter() {
                 { label: 'Neuvermietung', desc: 'Besenreine Übergabe für sofortige Vermietung.' },
               ].map(item => (
                 <div key={item.label} className="bg-white rounded-xl p-4 border border-gray-100">
-                  <h4 className="font-bold text-gray-900 text-sm">{item.label}</h4>
+                  <h3 className="font-bold text-gray-900 text-sm">{item.label}</h3>
                   <p className="text-gray-500 text-xs mt-1">{item.desc}</p>
                 </div>
               ))}
